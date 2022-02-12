@@ -1,0 +1,52 @@
+#product_listing_page {
+
+    .container {
+        @include flexBoxify(column, center,center);
+        margin-top: 50px;
+        margin-bottom: 80px;
+    }
+}
+
+.list_heading_sorting {
+    width: 100%;
+
+    @include flexBoxify(row, center,space-between);
+}
+
+.sort_box {
+    width: 30%;
+    @include flexBoxify(row, center,center);
+
+    .small_alert {
+        width: 40%;
+        margin-bottom: 0;
+    }
+}
+
+.product_name {
+    font-size: 18px;
+    font-weight: 500;
+    color: $accent-gray-font-dark;
+}
+
+.product_cards {
+    @include flexBoxify(row, center, center);
+}
+
+.cards_container {
+    margin-top: 45px;
+    margin-bottom: 40px;
+    @include flexBoxify(row, center, center);
+    flex-wrap: wrap;
+    row-gap: 55px;
+    column-gap: 55px;
+}
+
+.pag_box {
+    width: 100%;
+    @include flexBoxify(row, center, center);
+}
+
+.MuiPagination-ul {
+    @include flexBoxify(row, center, center);
+}

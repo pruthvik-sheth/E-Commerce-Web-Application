@@ -1,0 +1,5 @@
+#title_bar {
+    margin-top: 50px;
+    margin-bottom: 25px;
+    @include flexBoxify(row, center, center)
+}

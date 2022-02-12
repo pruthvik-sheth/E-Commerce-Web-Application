@@ -1,0 +1,21 @@
+#nav_button_bar {
+    margin-top: 50px;
+    width: 100%;
+    @include flexBoxify(row, center, center);
+
+    img {
+        max-width: 10px;
+        margin-top: 3px;
+    }
+
+    .nav_button {
+        font-size: 16px;
+    }
+    .nav_button:nth-child(1) {
+        color: $accent-gray-font;
+    }
+}
+
+.nav_button_bar_item + .nav_button_bar_item {
+    margin-left: 1rem;
+}

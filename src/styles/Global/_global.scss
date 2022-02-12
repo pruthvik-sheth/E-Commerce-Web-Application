@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+
+.container {
+    @include flexBoxify(row, center, center);
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+.general_button {
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    padding: 0 2rem;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 0.3rem;
+    background-color: $accent-red;
+    color: white;   
+}
+
+.nav_button {
+    background: none;
+    color: $accent-red;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.text_box {
+    height: 40px;
+    outline: none;
+    font-size: 16px;
+    padding: 0 1rem;
+    font-style: italic;
+    border: none;
+    border-radius: 0.3rem;
+    border: 1px rgb(177, 177, 177) solid;
+}
+
+.section_title {
+    font-size: 32px;
+    color: $accent-gray-font-dark;
+    font-weight: 900;
+}
+
+.sub_title {
+    font-size: 20px;
+    font-weight: 500;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-bottom: 1px $accent-gray-font solid;
+}
+

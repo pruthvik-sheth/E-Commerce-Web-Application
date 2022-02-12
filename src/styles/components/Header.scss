@@ -1,0 +1,62 @@
+header {
+    height: 92px;
+    @include flexBoxify(row, center, center)
+}
+
+nav{
+    width: 100%;
+    .container{
+        @include flexBoxify(row, center, space-between)
+    }
+}
+
+
+.logo {
+
+    width: 50%;
+    img {
+        max-width: 220px;
+    }
+}
+
+.nav_items {
+    @include flexBoxify(row, center, space-between);
+
+    img {
+        max-width: 20px;
+    }
+}
+
+.nav_item + .nav_item {
+    margin-left: 1.5rem;
+}
+
+.null {
+    height: 15px;
+    width: 1px;
+    background-color: $accent-gray-font;
+}
+
+.nav_button_1 {
+    border: 2px solid $accent-gray-font;
+    border-radius: 0.2rem;
+    width: 100px;
+    padding: 0.5rem 1rem;
+    color: $accent-gray-font;
+    @include flexBoxify(row, center, space-between);
+    transition: 0.3s ease all;
+
+    span {
+        color: $accent-red;
+    }
+
+    &:hover {
+        background-color: $accent-red;
+        color: white;
+        border: 1px solid $accent-red;
+
+        span {
+            color: white;
+        }
+    }
+} 

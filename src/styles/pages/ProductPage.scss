@@ -1,0 +1,84 @@
+#product_page {
+
+    .container {
+        @include flexBoxify(column, center, center);
+        margin-top: 45px;
+        margin-bottom: 80px;
+    }
+}
+
+.search_product {
+    width: 100%;
+    @include flexBoxify(row, center, flex-end);
+    margin-bottom: 32px;
+
+    .general_button {
+        margin-left: 10px;
+    }
+}
+
+.product_bar {
+    width: 100%;
+    height: 64px;
+    @include flexBoxify(row, center, space-between);
+    border-bottom: 1px $accent-gray-font solid;
+}
+
+.product_info {
+    width: 60%;
+    @include flexBoxify(row, center, space-between);
+}
+
+.product_info_item {
+    width: 40%;
+    @include flexBoxify(row, center, center);
+}
+
+.product_info_item:nth-child(1) {
+    width: 10%;
+}
+.product_info_item:nth-child(4) {
+    width: 10%;
+}
+
+.product_edit_buttons {
+    width: 40%;
+    @include flexBoxify(row, center, flex-end);
+
+    .general_button {
+        background: transparent;
+        border: 2px solid $accent-red;
+        transition: 0.3s ease all;
+        color: $accent-red;
+
+        &:hover {
+            color: white;
+            background-color: $accent-red;
+        }
+    }
+
+    .general_button:nth-child(1) {
+        color: $accent-green;
+        border: 2px solid $accent-green;
+        margin-right: 10px;
+
+        &:hover {
+            color: white;
+            background-color: $accent-green;
+        }
+    }
+}
+
+.product_info_item {
+    font-size: 14px;
+}
+
+.boldy {
+    font-weight: 500;
+}
+
+.table_pagination_box {
+    @include flexBoxify(row, center, flex-end);
+    width: 100%;
+    margin-top: 28px;
+}

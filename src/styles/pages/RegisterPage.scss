@@ -1,0 +1,7 @@
+#register_page {
+    .container {
+        @include flexBoxify(row, flex-start, space-between);
+        margin-top: 50px;
+        margin-bottom: 80px
+    }
+}

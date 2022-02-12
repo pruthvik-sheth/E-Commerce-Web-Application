@@ -1,0 +1,25 @@
+#card_page {
+
+    .container {
+        @include flexBoxify(column, center,center);
+        margin-top: 50px;
+        margin-bottom: 80px;
+        width: 40%;
+    }
+
+    .sort_box {
+        width: 50%;
+        justify-content: flex-end;
+        
+    }
+
+    .general_button {
+        margin-top: 35px;
+        align-self: flex-start;
+    }
+}
+
+.cart_cards {
+    width: 100%;
+    @include flexBoxify(column, center, center)
+}

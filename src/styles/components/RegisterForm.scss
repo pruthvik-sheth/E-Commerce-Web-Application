@@ -1,0 +1,24 @@
+#register_form {
+    width: 100%;
+    .container {
+        @include flexBoxify(column, center, center)
+    }
+}
+
+.section_info {
+    width: 100%;
+}
+
+.section_info + .section_info {
+    margin-top: 70px;
+    margin-bottom: 80px;
+}
+
+.side_by_side_fields {
+    width: 100%;
+    @include flexBoxify(row, flex-start, space-between);
+}
+
+.side_item {
+    width: 49%;
+}

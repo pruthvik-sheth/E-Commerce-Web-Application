@@ -1,0 +1,26 @@
+#login_content {
+    width: 48%;
+
+    li {
+        transform: translate(20px, 0);
+    }
+
+    .general_button {
+        margin-top: 165px;
+    }
+}
+
+.info_point {
+    font-size: 15px;
+    color: $accent-gray-font-dark;
+}
+
+.info_point + .info_point {
+    margin-top: 15px;
+}
+
+.small_alert {
+    color: #838383;
+    margin-bottom: 20px;
+}
+

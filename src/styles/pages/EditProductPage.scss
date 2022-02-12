@@ -1,0 +1,53 @@
+#edit_product_page {
+    
+    .container {
+        @include flexBoxify(column, center, center);
+        margin-top: 50px;
+        margin-bottom: 80px
+    
+    }
+
+}
+
+.drop_down {
+    @include flexBoxify(column, flex-start, flex-start);
+    // align-self: flex-start;
+}
+
+select {
+    height: 40px;
+    outline: none;
+    font-size: 16px;
+    padding: 0 1rem;
+    font-style: italic;
+    border: none;
+    border-radius: 0.3rem;
+    border: 1px rgb(177, 177, 177) solid;
+    width: 100%;
+}
+
+.buttons {
+    align-self: flex-start;
+
+    .general_button:nth-child(1){
+        background-color: $accent-green;
+    }
+    .general_button + .general_button {
+        margin-left: 1rem;
+    }
+}
+
+.custom_file_input {
+    border: 1px solid $accent-gray-font;
+    padding: 6px 12px;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    width: 49%;
+    height: 40px;
+}
+
+.upload_button_div {
+    width: 100%;
+    align-self: flex-start;
+    margin-bottom: 35px;
+}
