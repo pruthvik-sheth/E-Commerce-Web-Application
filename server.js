@@ -21,6 +21,9 @@ con.on('open', ()=>{
 //initiating the server
 const app = express()
 
+//middleware
+app.use(express.json())
+
 //routes
 app.use('/user', userRoute)
 app.use('/product', productRoute)
