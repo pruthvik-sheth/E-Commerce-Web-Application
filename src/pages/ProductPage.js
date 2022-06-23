@@ -1,6 +1,7 @@
 import TitleBar from '../components/TitleBar'
 import ProductBar from '../components/ProductBar'
 import { TablePagination } from '@material-ui/core'
+import { ListProducts } from '../utils/dummyData'
 
 
 const ProductPage = () => {
@@ -24,12 +25,13 @@ const ProductPage = () => {
                     </div>
                 </div>
 
-                <ProductBar />
-                <ProductBar />
-                <ProductBar />
-                <ProductBar />
-                <ProductBar />
-                <ProductBar />
+                {
+                    ListProducts.map(
+                        (product) => {
+                            return (<ProductBar key={product.id} product = {product}/>)
+                        }
+                    )
+                }
 
                 <div className='table_pagination_box'>
                     <TablePagination

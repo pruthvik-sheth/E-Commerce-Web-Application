@@ -1,4 +1,4 @@
-const ProductCard = () => {
+const ProductCard = (props) => {
     return (
         <div id='cart_card'>
             <div className="cart_image_container">
@@ -9,14 +9,14 @@ const ProductCard = () => {
 
                 <div className="cart_top">
                     <div className="cart_row">
-                        <div className="cart_title">Product Title</div>
-                        <div className="cart_price">₹ 500</div>
+                        <div className="cart_title">{props.product.title}</div>
+                        <div className="cart_price">₹ {props.product.amount}</div>
                     </div>
                     <div className="cart_row">
                         <div className="cart_item_name small_alert">Cart item name</div>
                         <div className="cart_discount">
                             <div className="eliminated_price">MRP ₹<span>1000</span></div>
-                            <div className="percent_off">50% OFF</div>
+                            <div className="percent_off">{props.product.discount}% OFF</div>
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@ const ProductCard = () => {
                     <div className="cart_row">
                         <div className="counter">
                             <button className="counter_button">+</button>
-                            <div className="counter_num">1</div>
+                            <div className="counter_num">{props.product.quantity}</div>
                             <button className="counter_button">-</button>
                         </div>
                         <div>

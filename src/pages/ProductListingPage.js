@@ -3,6 +3,7 @@ import TitleBar from '../components/TitleBar'
 import { Pagination } from '@material-ui/lab'
 import { ThemeProvider } from '@material-ui/core'
 import theme from '../theme'
+import { HomeProducts } from "../utils/dummyData"
 
 
 const ProductListingPage = () => {
@@ -25,14 +26,14 @@ const ProductListingPage = () => {
 
                 <div className='product_cards'>
                     <div className='cards_container'>
-                        <ProductCard number="800" />
-                        <ProductCard number="800" />
-                        <ProductCard number="800" />
-                        <ProductCard number="800" />
-                        <ProductCard number="800" />
-                        <ProductCard number="800" />
-                        <ProductCard number="800" />
-                        <ProductCard number="800" />
+                        {
+                            HomeProducts.map(
+                                (product) => {
+                                    return (<ProductCard key={product.id} product={product} />)
+                                }
+                            )
+                        }
+                        
                     </div>
                 </div>
 
@@ -45,3 +46,8 @@ const ProductListingPage = () => {
 }
 
 export default ProductListingPage
+
+
+// {
+//     DashboardProducts.map(product => <ProductCard key={product.id} product={product} />)
+// }

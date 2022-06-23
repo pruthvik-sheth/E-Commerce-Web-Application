@@ -1,6 +1,6 @@
 import CartCard from '../components/CartCard'
 import TitleBar from '../components/TitleBar'
-
+import { CartProducts } from '../utils/dummyData'
 
 const CartPage = () => {
     return (
@@ -15,10 +15,13 @@ const CartPage = () => {
                 </div>
 
                 <div className='cart_cards'>
-                    <CartCard />
-                    <CartCard />
-                    <CartCard />
-                    <CartCard />
+                    {
+                        CartProducts.map(
+                            (product) => {
+                                return (<CartCard key={product.id} product={product} />)
+                            }
+                        )
+                    }
                 </div>
                 <button className='general_button'>Place Order</button>
             </div>

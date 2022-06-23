@@ -1,9 +1,11 @@
-const NavButtonBar = () => {
+import { Link } from 'react-router-dom';
+
+const NavButtonBar = (props) => {
     return (
         <div id="nav_button_bar">
-            <button className="nav_button nav_button_bar_item">Home</button>
+            <Link to='/' className="nav_button nav_button_bar_item">Home</Link>
             <img className="nav_button_bar_item" src="images/breadcrumb-arrow.svg"></img>
-            <button className="nav_button nav_button_bar_item">Register</button>
+            <button className="nav_button nav_button_bar_item">{props.current}</button>
         </div>
     )
 }
