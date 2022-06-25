@@ -1,10 +1,19 @@
 import InputField from './InputField'
 import { useNavigate } from 'react-router-dom'
+// import bcrypt from 'bcrypt'
 
 const RegisterForm = () => {
-
     const navigate = useNavigate()
     
+    // const encryptPass = async (password)=>{
+    //     try{
+    //         const hashedPass = await bcrypt.hash(password,10)
+    //         return hashedPass
+    //     }catch(error){
+    //         console.log("Error generated while hashing the password")
+    //     }
+    // }
+
     const registerUser = async (event)=>{
         event.preventDefault()
 
