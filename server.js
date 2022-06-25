@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 //importing all the routes
 const userRoute = require('./Routes/Authentication/users')
@@ -23,6 +24,7 @@ const app = express()
 
 //middleware
 app.use(express.json())
+app.use(cors())
 
 //routes
 app.use('/user', userRoute)
