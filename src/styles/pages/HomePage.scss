@@ -1,4 +1,56 @@
 #home_page {
-    min-height: 30vh;
-    background: url('../../../public/images/home.png') no-repeat center / cover;
+    .container {
+        @include flexBoxify(column, center, center);
+    }
+
+    .general_button {
+        margin-top: 2rem
+    }
+}
+
+.home_intro {
+    @include flexBoxify(row, center, space-between);
+    background-color: $accent-blue;
+    width: 100%;
+    border-radius: 0.2rem;
+    padding: 2rem 5rem;
+    color: $accent-gray-font-dark;
+}
+
+.intro_left_title {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.intro_left {
+    width: 50%;
+}
+
+.intro_right {
+
+    @include flexBoxify(row, center, center);
+    width: 40%;
+
+    img {
+        max-width: 100%;
+    }
+}
+
+.home_categories {
+    width: 100%;
+    @include flexBoxify(column, center, center);
+    margin-top: 4rem;
+}
+
+.cate_title {
+    width: 100%;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+.cate_cards {
+    margin-top: 2rem;
+    width: 100%;
+    @include flexBoxify(row, center, space-between);
 }
