@@ -7,6 +7,12 @@ const store = Store()
 
 console.log(store.getState());
 
+store.subscribe(
+  () => {
+    console.log(store.getState());
+  }
+)
+
 const App = () => {
   return (
     <Provider store={store}>

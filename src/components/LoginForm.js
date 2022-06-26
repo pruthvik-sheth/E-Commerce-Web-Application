@@ -1,13 +1,16 @@
 import InputField from './InputField'
 import { useDispatch } from 'react-redux/es/hooks/useDispatch'
 import { login } from '../redux/actions/authActions'
+import cookieFetcher from '../utils/cookieFetcher'
+
+const cookies = cookieFetcher()
 
 const LoginForm = () => {
 
     const dispatch = useDispatch()
 
     const handleLogin = async (event) => {
-        
+
         // Preventing Browser from reloading
         event.preventDefault()
 
@@ -15,33 +18,38 @@ const LoginForm = () => {
         const password = event.target.elements.password.value
 
         const response = await fetch('/user/login', {
-            method : 'POST',
-            headers : {
-                'Content-Type' : 'application/json'
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
             },
-            body : JSON.stringify({
+            body: JSON.stringify({
                 email,
                 password
             })
         })
 
-        
+
+
+
 
         try {
             const data = await response.json()
             console.log(data)
 
-            // Dispatching login action to the store
-            dispatch(login( { loggedIn: true, userId: data.user.firstName } ))
+
+            if (data.success) {
+
+                // Dispatching login action to the store
+                dispatch(login({ loggedIn: true, userName: data.userName }))
+            }
+
         }
-        catch (err){
+        catch (err) {
             console.log(err);
         }
-        
-        
 
-        
-        
+
+
     }
 
     return (
@@ -52,11 +60,11 @@ const LoginForm = () => {
 
             <form onSubmit={handleLogin}>
                 <InputField inputTitle="Email Address *" inputType="email" inputName="email" />
-                <InputField inputTitle="Password *" inputType="password" inputName="password"/>
+                <InputField inputTitle="Password *" inputType="password" inputName="password" />
 
                 <button className="general_button" type='submit'>Login</button>
             </form>
-            
+
         </div>
     )
 }
