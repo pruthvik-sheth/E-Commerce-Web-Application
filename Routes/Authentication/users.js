@@ -27,18 +27,6 @@ route.post('/register',async (req, res)=> {
             password : req.body.password
         })
 
-        // // Creating a token
-        // const token = jwt.sign({
-        //     userId : user._id,
-        //     email : req.body.email
-        // },
-        // process.env.JWT_SECRET,{
-        //     expiresIn : "2h"
-        // })
-
-        // // saving user token to the database
-        // user.token = token
-
         res.status(201).json({ message : "User Successfully Registered", success : true, user : user})
     } catch (err) {
         res.status(401).json({ message : "User Not Registered" + err, success : false})
@@ -64,7 +52,9 @@ route.post('/login', async(req, res) => {
                     httpOnly : true
                 })
 
-                res.cookie("name", user.firstName,{
+                delete user.password
+
+                res.cookie("user", JSON.stringify(user),{
                     httpOnly : true
                 })
 
@@ -86,7 +76,7 @@ route.post('/login', async(req, res) => {
 route.get('/logout', authenticate, (req, res)=>{
     try {
         res.clearCookie('jwttoken')
-        res.clearCookie('name')
+        res.clearCookie('user')
         res.status(200).json({ message: "Logged out", success:true})
     } catch (err) {
         console.log("Error while logging out")

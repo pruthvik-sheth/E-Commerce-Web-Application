@@ -6,7 +6,6 @@ const verifyToken = async (req, res, next) => {
 
         const result = await jwt.verify(token, process.env.JWT_SECRET)
         if (result){
-            console.log(result)
             next()
         }else{
             res.status(400).json({message : "Authorization error", success : false})
