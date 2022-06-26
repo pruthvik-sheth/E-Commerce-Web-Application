@@ -1,6 +1,6 @@
 const initialAuthState = {
     loggedIn: false,
-    userId: null
+    userName: null
 }
 
 const authReducer = (state = initialAuthState, action) => {
@@ -10,13 +10,13 @@ const authReducer = (state = initialAuthState, action) => {
         case 'LOGIN':
             return {
                 loggedIn: action.loggedIn,
-                userId: action.userId
+                userName: action.userName
             }
 
         case 'LOGOUT':
             return {
                 loggedIn: initialAuthState.loggedIn,
-                userId: null
+                userName: null
             }
 
         default:

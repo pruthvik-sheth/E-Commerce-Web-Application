@@ -19,6 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:server": "env-cmd -f  config/.env.development nodemon server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -40,5 +41,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.18"
+  },
+  "proxy": "http://localhost:5000"
 }

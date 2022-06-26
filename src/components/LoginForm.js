@@ -6,13 +6,41 @@ const LoginForm = () => {
 
     const dispatch = useDispatch()
 
-    const handleLogin = async (e) => {
+    const handleLogin = async (event) => {
         
         // Preventing Browser from reloading
-        e.preventDefault()
+        event.preventDefault()
 
-        // Dispatching login action to the store
-        dispatch(login( { loggedIn: true, userId: 'myId' } ))
+        const email = event.target.elements.email.value
+        const password = event.target.elements.password.value
+
+        const response = await fetch('/user/login', {
+            method : 'POST',
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            body : JSON.stringify({
+                email,
+                password
+            })
+        })
+
+        
+
+        try {
+            const data = await response.json()
+            console.log(data)
+
+            // Dispatching login action to the store
+            dispatch(login( { loggedIn: true, userId: data.user.firstName } ))
+        }
+        catch (err){
+            console.log(err);
+        }
+        
+        
+
+        
         
     }
 
@@ -36,20 +64,6 @@ const LoginForm = () => {
 export default LoginForm
 
 
-// Preparing Request Object
-        // const reqObj = {
-        //     method: 'POST',
-        //     url: 'login',
-        //     body: {
-        //         email: e.target.elements.email.value,
-        //         password: e.target.elements.password.value
-        //     }
-        // }
 
-        // // Sending Request obj and retrieving data response
-        // try{
-        //     const { data } = await fetchingHandler(reqObj)
-        // }
-        // catch{
 
-        // }
+

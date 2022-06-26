@@ -1,10 +1,10 @@
 
 
-export const login = ( { loggedIn, userId } ) => ({
+export const login = ( { loggedIn, userName } ) => ({
 
     type: 'LOGIN',
     loggedIn,
-    userId
+    userName
 
 })
 
