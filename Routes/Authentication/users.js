@@ -33,7 +33,7 @@ route.post('/register',async (req, res)=> {
     }
 })
 
-route.post('/login', async(req, res) => {
+route.post('/login', async (req, res) => {
     try {
         const user = await User.findOne({ email : req.body.email})
         if (user !== null){
@@ -52,13 +52,10 @@ route.post('/login', async(req, res) => {
                     httpOnly : true
                 })
 
-                delete user.password
+                console.log(user)
+                res.cookie("user", user.firstName)
 
-                res.cookie("user", JSON.stringify(user),{
-                    httpOnly : true
-                })
-
-                res.status(200).json({ message : "Logged In Succesfully", success : true, user: user})
+                res.status(200).json({ message : "Logged In Succesfully", success : true, userName : user.firstName})
             }
             else{
                 res.status(401).json({ message : "Incorrect Password", success : false})

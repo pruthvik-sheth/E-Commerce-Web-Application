@@ -5,10 +5,9 @@ const cartSchema = mongoose.Schema({
         type : String,
         required : true
     },
-    items:{
-        type : String,
-        required: true
-    }
+    items:[{
+        type : String
+    }]
 })
 
 module.exports = mongoose.model('cart', cartSchema)
