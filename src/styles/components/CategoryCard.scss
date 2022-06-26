@@ -1,0 +1,26 @@
+
+
+.category_card {
+    min-height: 380px;
+    min-width: 320px;
+    background-color: $accent-orange;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+
+.card_image {
+    width: 100%;
+    min-height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-position: center;
+    background-position: right -60px bottom 10px;
+    border-radius: 0.2rem;
+}
+
+.card_title {
+    min-height: 80px;
+    @include flexBoxify(row, center, flex-start);
+    padding: 0 1rem;
+    font-weight: 600;
+}

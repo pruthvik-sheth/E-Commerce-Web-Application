@@ -1,9 +1,11 @@
 #product_listing_page {
 
+    margin-top: 3rem;
     .container {
         @include flexBoxify(column, center,center);
         margin-top: 50px;
         margin-bottom: 80px;
+        width: 100%;
     }
 }
 
@@ -36,7 +38,7 @@
 .cards_container {
     margin-top: 45px;
     margin-bottom: 40px;
-    @include flexBoxify(row, center, center);
+    @include flexBoxify(row, center, space-between);
     flex-wrap: wrap;
     row-gap: 55px;
     column-gap: 55px;

@@ -1,11 +1,14 @@
 import InputField from './InputField'
-import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux/es/hooks/useDispatch'
+import { login } from '../redux/actions/authActions'
 
 const LoginForm = () => {
-    
-    const navigate = useNavigate()
 
-    const loginUser = async (event) =>{
+    const dispatch = useDispatch()
+
+    const handleLogin = async (event) => {
+        
+        // Preventing Browser from reloading
         event.preventDefault()
 
         const email = event.target.elements.email.value
@@ -22,14 +25,23 @@ const LoginForm = () => {
             })
         })
 
-        const data = await response.json()
         
-        console.log(data)
 
-        if(data.success){
-            navigate('/')
+        try {
+            const data = await response.json()
+            console.log(data)
+
+            // Dispatching login action to the store
+            dispatch(login( { loggedIn: true, userId: data.user.firstName } ))
         }
+        catch (err){
+            console.log(err);
+        }
+        
+        
 
+        
+        
     }
 
     return (
@@ -38,14 +50,20 @@ const LoginForm = () => {
             <div className="sub_title">Registered Customers</div>
             <p className="small_alert info_point">If you have an account with us, please log in.</p>
 
-            <form onSubmit={loginUser}>
+            <form onSubmit={handleLogin}>
                 <InputField inputTitle="Email Address *" inputType="email" inputName="email" />
                 <InputField inputTitle="Password *" inputType="password" inputName="password"/>
-                <input className="general_button" type='submit' value='login'/>
-            </form>
 
+                <button className="general_button" type='submit'>Login</button>
+            </form>
+            
         </div>
     )
 }
 
 export default LoginForm
+
+
+
+
+

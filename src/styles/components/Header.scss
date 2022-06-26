@@ -1,5 +1,5 @@
 header {
-    height: 92px;
+    height: 120px;
     @include flexBoxify(row, center, center)
 }
 
@@ -38,25 +38,28 @@ nav{
 }
 
 .nav_button_1 {
-    border: 2px solid $accent-gray-font;
-    border-radius: 0.2rem;
-    width: 100px;
-    padding: 0.5rem 1rem;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     color: $accent-gray-font;
-    @include flexBoxify(row, center, space-between);
+    @include flexBoxify(row, center, center);
     transition: 0.3s ease all;
 
-    span {
-        color: $accent-red;
+    .cart_count {
+        color: $accent-gray-font-dark;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        font-weight: 800;
     }
 
     &:hover {
-        background-color: $accent-red;
+        background-color: $accent-orange;
         color: white;
-        border: 1px solid $accent-red;
 
-        span {
-            color: white;
+        .cart_count {
+            color: $accent-gray-font-dark;
         }
     }
 } 

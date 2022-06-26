@@ -1,5 +1,8 @@
 footer {
+    width: 100%;
     padding: 2.6rem 0;
+    border-radius: 0.2rem;
+    margin-bottom: 2rem;
     @include flexBoxify(column, center, center);
     background-color: $accent-gray;
     img {
