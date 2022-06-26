@@ -11,7 +11,7 @@ const LoginForm = () => {
         const email = event.target.elements.email.value
         const password = event.target.elements.password.value
 
-        const response = await fetch('http://localhost:5000/user/login', {
+        const response = await fetch('/user/login', {
             method : 'POST',
             headers : {
                 'Content-Type' : 'application/json'

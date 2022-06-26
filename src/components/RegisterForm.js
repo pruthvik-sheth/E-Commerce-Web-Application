@@ -12,7 +12,7 @@ const RegisterForm = () => {
         const email = event.target.elements.email.value
         const password = event.target.elements.password.value
 
-        const response = await fetch('http://localhost:5000/user/register',{
+        const response = await fetch('/user/register',{
             method : 'POST',
             headers : {
                 'Content-Type' : 'application/json'

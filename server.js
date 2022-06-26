@@ -1,6 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const authenticate = require('./middleware/authentication')
+const cookie = require('cookie-parser')
 
 //importing all the routes
 const userRoute = require('./Routes/Authentication/users')
@@ -25,10 +27,12 @@ const app = express()
 //middleware
 app.use(express.json())
 app.use(cors())
+app.use(cookie())
 
 //routes
-app.use('/user', userRoute)
-app.use('/product', productRoute)
+app.use('/user',userRoute)
+app.use('/product',  authenticate , productRoute)
+
 
 //listening on the desired port
 app.listen(process.env.PORT, ()=>{
