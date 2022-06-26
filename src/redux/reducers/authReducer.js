@@ -1,7 +1,13 @@
+import cookieFetcher from '../../utils/cookieFetcher'
+
+const cookies = cookieFetcher()
+
+
 const initialAuthState = {
-    loggedIn: false,
-    userName: null
+    loggedIn: !!cookies['user'],
+    userName: cookies['user']
 }
+
 
 const authReducer = (state = initialAuthState, action) => {
 
@@ -15,7 +21,7 @@ const authReducer = (state = initialAuthState, action) => {
 
         case 'LOGOUT':
             return {
-                loggedIn: initialAuthState.loggedIn,
+                loggedIn: false,
                 userName: null
             }
 
