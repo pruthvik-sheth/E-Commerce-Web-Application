@@ -7,6 +7,11 @@
     font-family: 'Montserrat';
 }
 
+button {
+    border: none;
+    background-color: transparent;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }

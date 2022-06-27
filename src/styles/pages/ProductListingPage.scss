@@ -52,3 +52,11 @@
 .MuiPagination-ul {
     @include flexBoxify(row, center, center);
 }
+
+.empty_image {
+    @include flexBoxify(row, center, center);
+
+    img {
+        max-width: 50%;
+    }
+}
