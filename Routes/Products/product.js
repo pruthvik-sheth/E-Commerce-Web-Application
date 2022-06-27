@@ -52,10 +52,12 @@ route.post("/addcart", authenticate, async (req, res) => {
 route.get('/getcart', authenticate, async (req, res) => {
   try {
     const userCart = await Cart.findOne({ 'userId': req.userId })
+    console.log(userCart);
     await userCart.populate('items.item')
-    res.status(200).json({ cart: userCart.items })
+    res.status(200).json({message:"Successully received cart", success:true, cart: userCart })
   } catch (err) {
     console.log(err)
+    res.status(200).json({ message:"Error while getting cart", success: true })
   }
 })
 

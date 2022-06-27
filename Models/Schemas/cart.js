@@ -17,6 +17,16 @@ const cartSchema = mongoose.Schema({
     }]
 })
 
+cartSchema.methods.toJSON = function () {
+    const cart = this.toObject()
+    delete cart.userId
+    delete cart._id
+    cart.items.forEach((i)=> {
+        delete i._id
+    })
+    return cart
+}
+
 
 
 module.exports = mongoose.model('cart', cartSchema)
