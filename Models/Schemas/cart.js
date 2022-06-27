@@ -2,12 +2,12 @@ const mongoose = require('mongoose')
 
 const cartSchema = mongoose.Schema({
     userId:{
-        type : mongoose.Schema.Types.ObjectId,
+        type : mongoose.Types.ObjectId,
         required : true
     },
     items:[{
         item:{
-            type : mongoose.Schema.Types.ObjectId,
+            type : mongoose.Types.ObjectId,
             ref : "product"
         },
         quantity: {
@@ -17,11 +17,6 @@ const cartSchema = mongoose.Schema({
     }]
 })
 
-cartSchema.virtual('Products', {
-    ref : 'product',
-    localField : 'items.item',
-    foreignField : '_id'
-})
 
 
 module.exports = mongoose.model('cart', cartSchema)
