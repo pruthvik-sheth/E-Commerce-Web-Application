@@ -52,7 +52,6 @@ route.post('/login', async (req, res) => {
                     httpOnly : true
                 })
 
-                console.log(user)
                 res.cookie("user", user.firstName)
 
                 res.status(200).json({ message : "Logged In Succesfully", success : true, userName : user.firstName})

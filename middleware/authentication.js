@@ -4,8 +4,9 @@ const verifyToken = async (req, res, next) => {
     try{
         const token = req.cookies["jwttoken"]
 
-        const result = await jwt.verify(token, process.env.JWT_SECRET)
-        if (result){
+        const result = jwt.verify(token, process.env.JWT_SECRET)
+        if (result.userId){
+            req.userId = result.userId
             next()
         }else{
             res.status(400).json({message : "Authorization error", success : false})
