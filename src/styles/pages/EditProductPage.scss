@@ -1,13 +1,13 @@
 #edit_product_page {
-    
+
     .container {
         @include flexBoxify(column, center, center);
         margin-top: 50px;
         margin-bottom: 80px
-    
     }
 
 }
+
 
 .drop_down {
     @include flexBoxify(column, flex-start, flex-start);
@@ -29,10 +29,11 @@ select {
 .buttons {
     align-self: flex-start;
 
-    .general_button:nth-child(1){
+    .general_button:nth-child(1) {
         background-color: $accent-green;
     }
-    .general_button + .general_button {
+
+    .general_button+.general_button {
         margin-left: 1rem;
     }
 }

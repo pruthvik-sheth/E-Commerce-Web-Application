@@ -3,9 +3,11 @@ import { useSelector } from "react-redux/es/exports"
 import { useDispatch } from 'react-redux/es/hooks/useDispatch'
 import { useNavigate } from 'react-router';
 import { logout } from '../redux/actions/authActions';
+import { setTextFilter } from '../redux/actions/filtersActions';
 
 const Header = () => {
     const { loggedIn, userName } = useSelector(state => ({ loggedIn: state.auth.loggedIn, userName: state.auth.userName }))
+    const filters = useSelector(state => state.filters)
 
     const dispatch = useDispatch()
 
@@ -38,7 +40,14 @@ const Header = () => {
                     </div>
 
                     <div className="nav_items">
-                        <input type='text' className="text_box search_bar_item nav_item" placeholder="Search Products"></input>
+                        <input
+                            type='text'
+                            value={filters.text}
+                            onChange={(e) => {
+                                dispatch(setTextFilter(e.target.value))
+                            }}
+                            className="text_box search_bar_item nav_item"
+                            placeholder="Search Products"></input>
                         {
                             loggedIn ? (
                                 <>
