@@ -3,7 +3,8 @@ import AppRouter from './routers/AppRouter'
 import { Provider } from 'react-redux'
 import Store from './redux/store/store'
 
-const store = Store() 
+
+const store = Store()
 
 console.log(store.getState());
 
@@ -14,6 +15,7 @@ store.subscribe(
 )
 
 const App = () => {
+
   return (
     <Provider store={store}>
       <AppRouter />

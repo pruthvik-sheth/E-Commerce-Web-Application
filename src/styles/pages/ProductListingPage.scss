@@ -1,23 +1,23 @@
 #product_listing_page {
 
     margin-top: 3rem;
+
     .container {
-        @include flexBoxify(column, center,center);
+        @include flexBoxify(column, center, center);
         margin-top: 50px;
         margin-bottom: 80px;
-        width: 100%;
     }
 }
 
 .list_heading_sorting {
     width: 100%;
 
-    @include flexBoxify(row, center,space-between);
+    @include flexBoxify(row, center, space-between);
 }
 
 .sort_box {
     width: 30%;
-    @include flexBoxify(row, center,center);
+    @include flexBoxify(row, center, center);
 
     .small_alert {
         width: 40%;
@@ -36,12 +36,12 @@
 }
 
 .cards_container {
-    margin-top: 45px;
+    margin-top: 4rem;
     margin-bottom: 40px;
     @include flexBoxify(row, center, space-between);
     flex-wrap: wrap;
-    row-gap: 55px;
-    column-gap: 55px;
+    row-gap: 80px;
+    column-gap: 15px;
 }
 
 .pag_box {

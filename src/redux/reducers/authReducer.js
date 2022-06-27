@@ -9,9 +9,11 @@ const initialAuthState = {
 }
 
 
+
+
 const authReducer = (state = initialAuthState, action) => {
 
-    switch(action.type) {
+    switch (action.type) {
 
         case 'LOGIN':
             return {

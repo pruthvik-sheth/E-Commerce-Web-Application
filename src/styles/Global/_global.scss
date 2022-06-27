@@ -20,7 +20,6 @@
 
 .general_button {
     transition: 0.3s ease all;
-    border: none;
     cursor: pointer;
     height: 40px;
     padding: 0 2rem;
@@ -28,13 +27,51 @@
     font-weight: 700;
     border-radius: 0.3rem;
     border: 2px solid $accent-gray-font-dark;
-    color: $accent-gray-font-dark;   
+    color: $accent-gray-font-dark;
     background-color: transparent;
+
+    &:hover {
+        background-color: $accent-gray-font-dark;
+        color: white;
+    }
 }
 
-.general_button:hover {
-    background-color: $accent-gray-font-dark;
-    color: white;
+.general_button_1 {
+    transition: 0.3s ease all;
+    cursor: pointer;
+    height: 40px;
+    min-width: 180px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 0.2rem;
+    border: none;
+    color: $accent-gray-font-dark;
+    background-color: transparent;
+
+    @include flexBoxify(row, center, flex-end);
+
+    &:hover {
+        background-color: $accent-gray-font-dark;
+        color: white;
+        @include flexBoxify(row, center, center);
+    }
+}
+
+.general_button_2 {
+    transition: 0.3s ease all;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0.5em 1.1em;
+    border-radius: 0.2rem;
+    border: 1px solid $accent-gray-font-dark;
+    color: $accent-gray-font-dark;
+    background-color: transparent;
+
+    &:hover {
+        background-color: $accent-gray-font-dark;
+        color: white;
+    }
 }
 
 .nav_button {
@@ -70,4 +107,3 @@
     width: 100%;
     border-bottom: 1px $accent-gray-font solid;
 }
-
