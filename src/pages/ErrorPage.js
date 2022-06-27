@@ -2,7 +2,7 @@
 
 const ErrorPage = () => (
     <div id="error">
-        <h1>Page Not Found!</h1>
+        <img src="/images/404.gif"></img>
     </div>
 )
 

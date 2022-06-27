@@ -1,9 +1,8 @@
 #error {
-    h1 {
-        font-size: 5rem;
-        font-weight: bolder;
-        color: $accent-red;
-        min-height: 60vh;
-        @include flexBoxify(row, center,center);
+    @include flexBoxify(row, center, center);
+
+    img {
+        max-width: 30%;
     }
+
 }

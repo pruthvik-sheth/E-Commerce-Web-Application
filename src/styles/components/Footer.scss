@@ -3,11 +3,14 @@ footer {
     padding: 2.6rem 0;
     border-radius: 0.2rem;
     margin-bottom: 2rem;
+    margin-top: 1rem;
     @include flexBoxify(column, center, center);
     background-color: $accent-gray;
+
     img {
         max-width: 220px;
     }
+
     .small_alert {
         margin-top: 2rem;
     }

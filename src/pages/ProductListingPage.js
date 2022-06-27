@@ -5,9 +5,13 @@ import { ThemeProvider } from '@material-ui/core'
 import theme from '../theme'
 import { useSelector } from 'react-redux'
 import getVisibleProducts from '../redux/actions/selectors/productsSelector'
+import { useDispatch } from 'react-redux/es/hooks/useDispatch'
+import { sortByCategory } from '../redux/actions/filtersActions'
 
 
 const ProductListingPage = () => {
+
+    const dispatch = useDispatch()
 
     const products = useSelector(state => state.products)
 
@@ -22,31 +26,49 @@ const ProductListingPage = () => {
         <div id='product_listing_page'>
             <TitleBar title="Product Listing" />
             <div className='container'>
-                <div className="list_heading_sorting">
-                    <div className="product_name">Total Products: {filteredProducts.length} items</div>
-                    <div className="sort_box">
-                        <div className="small_alert">Sort By</div>
-                        <select name="cars" id="cars">
-                            <option value="a">a-z</option>
-                            <option value="b">Option 1</option>
-                            <option value="c">Option 2</option>
-                            <option value="d">Option 3</option>
-                        </select>
-                    </div>
-                </div>
 
-                <div className='product_cards'>
-                    <div className='cards_container'>
-                        {
-                            filteredProducts.map(
-                                (product) => {
-                                    return (<ProductCard key={product.id} product={product} />)
-                                }
-                            )
-                        }
+                {
+                    filteredProducts.length !== 0 ? (
 
-                    </div>
-                </div>
+                        <>
+                            <div className="list_heading_sorting">
+                                <div className="product_name">Total Products: {filteredProducts.length} items</div>
+                                <div className="sort_box">
+                                    <div className="small_alert">Sort By</div>
+                                    <select
+                                        onChange={
+                                            (e) => {
+                                                dispatch(sortByCategory(e.target.value))
+                                            }
+                                        }
+                                    >
+                                        <option value="All">All</option>
+                                        <option value="Electronics">Electronics</option>
+                                        <option value="Beauty">Beauty</option>
+                                        <option value="Lifestyle">Lifestyle</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div className='product_cards'>
+                                <div className='cards_container'>
+                                    {
+                                        filteredProducts.map(
+                                            (product) => {
+                                                return (<ProductCard key={product.id} product={product} />)
+                                            }
+                                        )
+                                    }
+
+                                </div>
+                            </div>
+                        </>
+                    ) : (
+                        <div className='empty_image'><img src='/images/girl-empty.gif'></img></div>
+                    )
+                }
+
+
             </div>
 
             <ThemeProvider theme={theme}>

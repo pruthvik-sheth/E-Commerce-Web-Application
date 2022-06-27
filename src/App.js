@@ -6,13 +6,14 @@ import Store from './redux/store/store'
 
 const store = Store()
 
-console.log(store.getState());
+// console.log(store.getState());
 
-store.subscribe(
-  () => {
-    console.log(store.getState());
-  }
-)
+// store.subscribe(
+//   () => {
+//     console.log(store.getState());
+//   }
+// )
+
 
 const App = () => {
 
