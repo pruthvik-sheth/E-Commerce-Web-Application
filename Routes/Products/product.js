@@ -10,7 +10,6 @@ const { default: mongoose } = require("mongoose");
 
 
 //routes
-<<<<<<< HEAD
 route.get("/products", async (req, res) => {
   try {
     const products = await Product.find();
@@ -28,25 +27,6 @@ route.get("/products/:id", async (req, res) => {
     res.status(404).json({ message: "Error while loading the products", success: false });
   }
 });
-=======
-route.get('/products', async (req, res) => {
-    try {
-        const products = await Product.find()
-        res.status(200).json({ message: "Successfully found the products", success: true, products: products })
-    } catch (err) {
-        res.status(404).json({ message: "Error while loading the products", success: false })
-    }
-})
-
-route.get('/products/:id', async (req, res) => {
-    try {
-        const product = await Product.findById(req.params.id)
-        res.status(200).json({ message: "Successfully found the products", success: true, product: product })
-    } catch (err) {
-        res.status(404).json({ message: "Error while loading the products", success: false })
-    }
-})
->>>>>>> c14a3e6accd9d63f7fac53f74850128145573e94
 
 route.post("/addcart", authenticate ,async (req, res) => {
   try {
@@ -59,7 +39,7 @@ route.post("/addcart", authenticate ,async (req, res) => {
     } else {
       const newCart = await Cart.create({
         userId: decodedId,
-        items: req.body.items.map((i)=> ({item : mongoose.Schema.Types.ObjectId(i)})),
+        items: req.body.items.map((i)=> ({item : mongoose.Types.ObjectId(i)})),
       })
       res.status(200).json({message: "Product Added to the cart",success: true,cart: newCart,});
     }
@@ -72,12 +52,8 @@ route.post("/addcart", authenticate ,async (req, res) => {
 route.get('/getcart', authenticate ,async(req, res)=>{
   try {
     const userCart = await Cart.findOne({'userId' : req.userId})
-    console.log(userCart, req.userId)
-    await userCart.populate({
-      path:"Products",
-    })
-    console.log(userCart);
-    res.status(200).json({cart : userCart})
+    await userCart.populate('items.item')
+    res.status(200).json({cart : userCart.items})
   } catch (err) {
     console.log(err)
   }
