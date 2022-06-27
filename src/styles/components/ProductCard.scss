@@ -1,33 +1,31 @@
 #product_card {
-    max-width: 260px;
-    min-width: 260px;
+    width: 255px;
+    // min-width: 260px;
     @include flexBoxify(column, center, center);
     background-color: $accent-gray;
     border-radius: 0.2rem;
-    
+
 }
 
 .product_image {
     min-height: 190px;
     width: 100%;
-    background: url('../../../public/images/dummy-image.png') no-repeat center / cover;
+    background: url('../../../public/images/vr.png') no-repeat center / cover;
     border-radius: 0.25rem;
+    background-size: 90%;
 }
 
 .product_sub_title {
-    font-size: 1rem;    
+    font-size: 1rem;
 }
 
 .product_info_box {
     padding: 1rem;
     width: 100%;
-    min-height: 250px;
     @include flexBoxify(column, flex-start, flex-start);
-    
 
-    .general_button {
-        width: 100%;
-    }
+
+
 }
 
 .product_title {
@@ -49,7 +47,6 @@
 .product_discount {
     width: 100%;
     @include flexBoxify(row, center, flex-start);
-    margin-top: auto;
 }
 
 .eliminated_price {
@@ -65,9 +62,15 @@
 .percent_off {
     color: $accent-green;
     font-weight: 500;
-} 
+}
 
 .product_price {
     font-weight: 700;
-    margin-bottom: 1rem;
+    font-size: 20px;
+}
+
+.product_lower {
+    width: 100%;
+    @include flexBoxify(row, center, space-between);
+    margin-top: 0.6rem;
 }

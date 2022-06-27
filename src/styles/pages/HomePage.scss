@@ -2,10 +2,6 @@
     .container {
         @include flexBoxify(column, center, center);
     }
-
-    .general_button {
-        margin-top: 2rem
-    }
 }
 
 .home_intro {
@@ -15,6 +11,10 @@
     border-radius: 0.2rem;
     padding: 2rem 5rem;
     color: $accent-gray-font-dark;
+
+    .general_button {
+        margin-top: 2rem
+    }
 }
 
 .intro_left_title {

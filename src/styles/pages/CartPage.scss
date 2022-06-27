@@ -1,7 +1,7 @@
 #card_page {
 
     .container {
-        @include flexBoxify(column, center,center);
+        @include flexBoxify(column, center, center);
         margin-top: 50px;
         margin-bottom: 80px;
         width: 40%;
@@ -10,7 +10,6 @@
     .sort_box {
         width: 50%;
         justify-content: flex-end;
-        
     }
 
     .general_button {
@@ -21,5 +20,5 @@
 
 .cart_cards {
     width: 100%;
-    @include flexBoxify(column, center, center)
+    @include flexBoxify(column, center, center);
 }
