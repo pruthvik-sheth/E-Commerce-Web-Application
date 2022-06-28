@@ -1,6 +1,6 @@
 import TitleBar from '../components/TitleBar'
 import ProductBar from '../components/ProductBar'
-import { TablePagination } from '@material-ui/core'
+import TablePagination from '@mui/material/TablePagination'
 import { ListProducts } from '../utils/dummyData'
 
 
@@ -28,7 +28,7 @@ const ProductPage = () => {
                 {
                     ListProducts.map(
                         (product) => {
-                            return (<ProductBar key={product.id} product = {product}/>)
+                            return (<ProductBar key={product.id} product={product} />)
                         }
                     )
                 }

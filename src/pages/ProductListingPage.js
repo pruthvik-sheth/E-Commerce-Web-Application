@@ -1,10 +1,10 @@
 import ProductCard from '../components/ProductCard'
 import TitleBar from '../components/TitleBar'
-import { Pagination } from '@material-ui/lab'
-import { ThemeProvider } from '@material-ui/core'
+import { Pagination } from '@mui/material'
+import { ThemeProvider } from '@mui/material/styles';
 import theme from '../theme'
 import { useSelector } from 'react-redux'
-import getVisibleProducts from '../redux/actions/selectors/productsSelector'
+import getVisibleProducts from '../redux/selectors/productsSelector'
 import { useDispatch } from 'react-redux/es/hooks/useDispatch'
 import { sortByCategory } from '../redux/actions/filtersActions'
 

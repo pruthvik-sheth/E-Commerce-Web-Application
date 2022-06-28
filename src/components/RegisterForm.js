@@ -1,9 +1,12 @@
 import InputField from "./InputField";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import setSnackbar from "../redux/actions/snackbarActions";
 
 const RegisterForm = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const [statePassword, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -16,7 +19,7 @@ const RegisterForm = () => {
     const lastname = event.target.elements.lastname.value;
     const email = event.target.elements.email.value;
     const password = event.target.elements.password.value;
-    
+
     const response = await fetch("/user/register", {
       method: "POST",
       headers: {
@@ -34,6 +37,10 @@ const RegisterForm = () => {
 
     if (data.success) {
       navigate("/login");
+      dispatch(setSnackbar(true, 'success', data.message))
+    }
+    else {
+      dispatch(setSnackbar(true, 'error', data.message))
     }
   };
 
@@ -72,42 +79,42 @@ const RegisterForm = () => {
           <div className="sub_title">Login Information</div>
           <div className="side_by_side_fields">
             <div className="side_item">
-                <div id="input_field">
-                    <div className="input_title">Password *</div>
-                    <input
-                        type="password"
-                        name="password"
-                        className="text_box"
-                        value= {statePassword}
-                        onChange= {(e) => {setPassword(e.target.value)}}
-                    ></input>
+              <div id="input_field">
+                <div className="input_title">Password *</div>
+                <input
+                  type="password"
+                  name="password"
+                  className="text_box"
+                  value={statePassword}
+                  onChange={(e) => { setPassword(e.target.value) }}
+                ></input>
               </div>
             </div>
             <div className="side_item">
               <div id="input_field">
-                    <div className="input_title">Confirm Password * 
-                        {
-                            flag && (statePassword && statePassword === confirmPassword ? 
-                                (<p>Confirmed</p>) : 
-                                (<p>not confirmed</p>) )
-                        }
-                    </div>
-                    <input
-                        type="password"
-                        className="text_box"
-                        value= {confirmPassword}
-                        onChange = {(e) => {setConfirmPassword(e.target.value)}}
-                        onFocus = { () => {setFlag(true)} }
-                        onBlur = { () => {setFlag(false)} }
-                        name = "confirmPassword"
-                    ></input>
+                <div className="input_title">Confirm Password *
+                  {
+                    flag && (statePassword && statePassword === confirmPassword ?
+                      (<p>Confirmed</p>) :
+                      (<p>not confirmed</p>))
+                  }
+                </div>
+                <input
+                  type="password"
+                  className="text_box"
+                  value={confirmPassword}
+                  onChange={(e) => { setConfirmPassword(e.target.value) }}
+                  onFocus={() => { setFlag(true) }}
+                  onBlur={() => { setFlag(false) }}
+                  name="confirmPassword"
+                ></input>
               </div>
 
             </div>
           </div>
-            {
-                <input className="general_button" type="submit" value="Register" disabled={!(!flag && (statePassword && statePassword === confirmPassword))}/>   
-            }
+          {
+            <input className="general_button" type="submit" value="Register" disabled={!(!flag && (statePassword && statePassword === confirmPassword))} />
+          }
         </div>
       </form>
     </div>
