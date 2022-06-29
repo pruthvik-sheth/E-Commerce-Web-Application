@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux/es/hooks/useDispatch'
 import { useNavigate } from 'react-router';
 import { logout } from '../redux/actions/authActions';
 import { setTextFilter } from '../redux/actions/filtersActions';
+import setSnackbar from '../redux/actions/snackbarActions';
 
 const Header = () => {
     const { loggedIn, userName } = useSelector(state => ({ loggedIn: state.auth.loggedIn, userName: state.auth.userName }))
@@ -22,6 +23,7 @@ const Header = () => {
 
             if (data.success) {
                 dispatch(logout())
+                dispatch(setSnackbar(true, 'info', data.message))
             }
         }
         catch (err) {
