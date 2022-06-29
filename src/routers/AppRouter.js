@@ -63,26 +63,6 @@ const AppRouter = () => {
     }
   }
 
-  // const getProducts = () => {
-  //   const data = HomeProducts
-
-  //   // console.log(data);
-
-  //   data.map(
-  //     (product) => {
-  //       dispatch(
-  //         setProduct({
-  //           id: product.id,
-  //           title: product.title,
-  //           description: product.description,
-  //           amount: product.amount,
-  //           discount: product.discount,
-  //           category: product.category,
-  //         })
-  //       )
-  //     }
-  //   )
-  // }
 
   useEffect(() => {
     getProducts()
