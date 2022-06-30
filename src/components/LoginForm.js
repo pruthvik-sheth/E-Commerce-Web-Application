@@ -1,14 +1,50 @@
 import InputField from './InputField'
 import { useDispatch } from 'react-redux/es/hooks/useDispatch'
 import { login } from '../redux/actions/authActions'
-import cookieFetcher from '../utils/cookieFetcher'
 import setSnackbar from '../redux/actions/snackbarActions'
+import { addToCart } from '../redux/actions/cartActions'
 
-const cookies = cookieFetcher()
+
 
 const LoginForm = () => {
 
+
     const dispatch = useDispatch()
+
+    const getCart = async () => {
+
+        try {
+            const response = await fetch("/cart/getcart", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            try {
+                const data = await response.json();
+                console.log(data);
+
+                if (data.success) {
+                    if (!data.empty) {
+                        data.cart.items.forEach(
+                            (element) => {
+                                dispatch(addToCart({ id: element.item._id, fromDatabase: true, count: element.quantity }))
+                            }
+                        )
+                    }
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+
+        }
+        catch (err) {
+            console.log(err);
+        }
+
+    }
 
     const handleLogin = async (event) => {
 
@@ -39,6 +75,8 @@ const LoginForm = () => {
                 // Dispatching login action to the store
                 dispatch(setSnackbar(true, 'success', data.message))
                 dispatch(login({ loggedIn: true, userName: data.userName }))
+                getCart()
+
             }
             else {
                 dispatch(setSnackbar(true, 'error', data.message))

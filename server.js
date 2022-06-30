@@ -23,7 +23,7 @@ app.use(cookie())
 //routes
 app.use('/user', userRoute)
 app.use('/product', productRoute)
-app.use('/cart',authenticate,cartRoute)
+app.use('/cart', authenticate, cartRoute)
 
 
 //listening on the desired port

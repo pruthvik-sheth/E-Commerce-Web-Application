@@ -11,32 +11,37 @@ const MySnackbar = () => {
     const snackbarOpen = useSelector(state => state.snackbar.snackbarOpen)
     const snackbarType = useSelector(state => state.snackbar.snackbarType)
     const snackbarMessage = useSelector(state => state.snackbar.snackbarMessage)
+    const snackbarAlive = useSelector(state => state.snackbar.snackbarAlive)
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return
         }
 
-        dispatch(setSnackbar(false, 'success', ''))
+        dispatch(setSnackbar(false, null, null))
     }
 
     return (
 
         <Snackbar
             open={snackbarOpen}
-            autoHideDuration={3000}
+            autoHideDuration={snackbarAlive}
             onClose={handleClose}
             anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         >
-            <Alert
-                elevation={6}
-                variant="filled"
-                onClose={handleClose}
-                severity={snackbarType}
-                color={snackbarType}
-            >
-                {snackbarMessage}
-            </Alert>
+            {
+                snackbarOpen ? (
+                    <Alert
+                        onClose={handleClose}
+                        elevation={6}
+                        variant="filled"
+                        severity={snackbarType}
+                        color={snackbarType}
+                    >
+                        {snackbarMessage}
+                    </Alert>
+                ) : null
+            }
         </Snackbar>
 
     )
