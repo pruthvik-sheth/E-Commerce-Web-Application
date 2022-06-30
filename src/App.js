@@ -7,13 +7,13 @@ import MySnackbar from './components/MySnackbar';
 
 const store = Store()
 
-console.log(store.getState());
+// console.log(store.getState());
 
-store.subscribe(
-  () => {
-    console.log(store.getState());
-  }
-)
+// store.subscribe(
+//   () => {
+//     console.log(store.getState());
+//   }
+// )
 
 
 const App = () => {

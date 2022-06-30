@@ -1,24 +1,48 @@
 #card_page {
 
     .container {
-        @include flexBoxify(column, center, center);
+        @include flexBoxify(row, center, space-between);
         margin-top: 50px;
         margin-bottom: 80px;
-        width: 40%;
     }
 
     .sort_box {
         width: 50%;
         justify-content: flex-end;
     }
-
-    .general_button {
-        margin-top: 35px;
-        align-self: flex-start;
-    }
 }
 
 .cart_cards {
     width: 100%;
     @include flexBoxify(column, center, center);
+}
+
+.cart-left {
+    width: 70%;
+}
+
+.cart-right {
+    width: 27%;
+    background-color: $accent-gray;
+    padding: 1rem;
+    align-self: flex-start;
+    border-radius: 0.2rem;
+
+    .general_button {
+        width: 100%;
+    }
+}
+
+.summary_title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.summ_item {
+    padding: 1rem 0;
+}
+
+.summ_row {
+    padding: 0.5rem 0;
+    @include flexBoxify(row, center, space-between);
 }

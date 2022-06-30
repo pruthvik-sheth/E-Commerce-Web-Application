@@ -11,15 +11,50 @@ import HomePage from '../pages/HomePage'
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
 
-import { HomeProducts } from "../utils/dummyData"
+// import { HomeProducts } from "../utils/dummyData"
 import { useEffect } from "react"
 import { useDispatch } from 'react-redux/es/hooks/useDispatch'
 import setProduct from '../redux/actions/productsActions'
 import ProductListingPage from '../pages/ProductListingPage'
+import { addToCart } from '../redux/actions/cartActions'
 
 const AppRouter = () => {
 
   const dispatch = useDispatch()
+  const getCart = async () => {
+
+    try {
+      const response = await fetch("/cart/getcart", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      try {
+        const data = await response.json();
+        console.log(data);
+
+        if (data.success) {
+          if (!data.empty) {
+            data.cart.items.forEach(
+              (element) => {
+                dispatch(addToCart({ id: element.item._id, fromDatabase: true, count: element.quantity }))
+              }
+            )
+          }
+        }
+      }
+      catch (err) {
+        console.log(err);
+      }
+
+    }
+    catch (err) {
+      console.log(err);
+    }
+
+  }
 
   const getProducts = async () => {
 
@@ -34,9 +69,7 @@ const AppRouter = () => {
       try {
         const data = await response.json()
         console.log(data);
-
         // const data = HomeProducts
-
         // console.log(data);
 
         data.products.map(
@@ -63,9 +96,9 @@ const AppRouter = () => {
     }
   }
 
-
   useEffect(() => {
     getProducts()
+    getCart()
   }, [])
 
   return (

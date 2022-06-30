@@ -1,8 +1,12 @@
 import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../redux/actions/cartActions';
+import setSnackbar from '../redux/actions/snackbarActions';
 
 const ProductCard = (props) => {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const discount = props.product.discount
     const amount = props.product.amount
@@ -21,7 +25,11 @@ const ProductCard = (props) => {
                 </div>
                 <div className="product_lower">
                     <div className="product_price">₹ {price}</div>
-                    <button onClick={() => { navigate('/cart') }} className="general_button_2">Add to Cart</button>
+                    <button onClick={() => {
+                        // navigate('/cart')
+                        dispatch(addToCart({ id: props.product.id }))
+                        dispatch(setSnackbar(true, 'info', 'Product Added to Cart!', 1000))
+                    }} className="general_button_2">Add to Cart</button>
                 </div>
             </div>
         </div>

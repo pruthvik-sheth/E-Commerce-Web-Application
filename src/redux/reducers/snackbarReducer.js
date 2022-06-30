@@ -2,7 +2,8 @@
 const initialSnackState = {
     snackbarOpen: false,
     snackbarType: 'success',
-    snackbarMessage: ''
+    snackbarMessage: '',
+    snackbarAlive: 4000
 }
 
 const snackbarReducer = (state = initialSnackState, action) => {
@@ -10,13 +11,14 @@ const snackbarReducer = (state = initialSnackState, action) => {
     switch (action.type) {
 
         case 'SET_SNACKBAR':
-            const { snackbarOpen, snackbarType, snackbarMessage } = action;
+            const { snackbarOpen, snackbarType, snackbarMessage, snackbarAlive } = action;
 
             return {
                 ...state,
                 snackbarOpen,
                 snackbarType,
-                snackbarMessage
+                snackbarMessage,
+                snackbarAlive
             }
 
         default:
