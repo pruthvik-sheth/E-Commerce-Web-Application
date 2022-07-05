@@ -1,9 +1,14 @@
 #cart_card {
     width: 100%;
     @include flexBoxify(row, center, space-between);
-    padding: 1rem;
-    border: 1px solid $accent-gray-font;
+    padding: 1rem 2rem;
     border-radius: 0.2rem;
+
+    box-shadow: 0px 10px 50px rgba(70, 70, 70, 0.08);
+
+    .eliminated_price {
+        margin-right: 0;
+    }
 }
 
 #cart_card+#cart_card {
@@ -11,44 +16,54 @@
 }
 
 .cart_image_container {
-    width: 30%;
+    width: 25%;
 }
 
 .cart_image {
     min-height: 120px;
     max-width: 150px;
-    background: url('../../../public/images/dummy-image.png') no-repeat center / cover;
+    background: url('../../../public/images/vr.png') no-repeat center / cover;
 }
 
 
 .cart_info_box {
-    min-height: 120px;
-    width: 70%;
-    @include flexBoxify(column, center, flex-start);
-
-    .percent_off {
-        color: $accent-red;
-    }
-}
-
-.cart_top {
-    width: 100%;
-    @include flexBoxify(column, center, center);
-}
-
-.cart_row {
-    margin-bottom: 10px;
-    width: 100%;
-    @include flexBoxify(row, center, space-between);
-
-    .small_alert {
-        margin-bottom: 0;
-    }
-}
-
-.cart_discount {
+    width: 75%;
     @include flexBoxify(row, center, center);
 }
+
+.cart_sec {
+    width: 100%;
+    @include flexBoxify(row, center, center);
+}
+
+.cart_sec_1 {
+    @include flexBoxify(column, flex-start, center);
+}
+
+.cart_sec_2 {
+    @include flexBoxify(column, flex-end, center);
+}
+
+
+
+// .cart_top {
+//     width: 100%;
+//     @include flexBoxify(column, center, center);
+// }
+
+// .cart_row {
+//     margin-bottom: 10px;
+//     width: 100%;
+//     @include flexBoxify(row, center, space-between);
+
+//     .small_alert {
+//         margin-bottom: 0;
+//     }
+// }
+
+// .cart_discount {
+//     @include flexBoxify(row, center, center);
+// }
 
 .cart_title {
     font-weight: 700;
@@ -65,9 +80,10 @@
 .counter_button {
     height: 20px;
     width: 20px;
-    background-color: $accent-red;
+    background-color: $accent-gray-font-dark;
     border: none;
     border-radius: 2px;
+    border-radius: 50%;
     cursor: pointer;
     color: white;
     font-weight: 700;
@@ -76,8 +92,17 @@
 .counter_num {
     height: 20px;
     width: 20px;
-    border: 1px solid $accent-gray-font;
     @include flexBoxify(row, center, center);
     border-radius: 2px;
     margin: 0 10px;
+    font-weight: bold;
+}
+
+.cart_price {
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.percent_off {
+    margin-bottom: 1rem;
 }
