@@ -42,6 +42,8 @@ const ProductListingPage = () => {
                                                 dispatch(sortByCategory(e.target.value))
                                             }
                                         }
+
+                                        value={filters.sortByCategory}
                                     >
                                         <option value="All">All</option>
                                         <option value="Electronics">Electronics</option>

@@ -12,7 +12,7 @@ const RecentProducts = () => {
 
     const products = useSelector(state => state.products)
 
-    const onlyTenProducts = products.slice(0, 10)
+    const onlyTenProducts = products.slice(0, 5)
 
 
     return (

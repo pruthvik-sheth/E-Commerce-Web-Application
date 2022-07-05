@@ -1,6 +1,5 @@
 import CartCard from '../components/CartCard'
 import TitleBar from '../components/TitleBar'
-import { CartProducts } from '../utils/dummyData'
 import { useSelector } from 'react-redux'
 
 
@@ -35,15 +34,21 @@ const CartPage = () => {
                         </div>
                     </div> */}
 
-                    <div className='cart_cards'>
-                        {
-                            extractedProducts.map(
-                                (product) => {
-                                    return (<CartCard key={product.id} product={product} />)
+                    {
+                        extractedProducts.length !== 0 ? (
+                            <div className='cart_cards'>
+                                {
+                                    extractedProducts.map(
+                                        (product) => {
+                                            return (<CartCard key={product.id} product={product} />)
+                                        }
+                                    )
                                 }
-                            )
-                        }
-                    </div>
+                            </div>
+                        ) : (
+                            <img src='/images/cart-empty.gif'></img>
+                        )
+                    }
                 </div>
 
                 <div className='cart-right'>

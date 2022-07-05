@@ -59,18 +59,30 @@ const HomePage = () => {
 
                         <button onClick={() => {
                             navigate('/products')
-                            dispatch(sortByCategory('Clothes'))
+                            dispatch(sortByCategory('Lifestyle'))
 
                         }}>
                             <CategoryCard bgSize='80' bg='hoodie.png' title='Life Style' />
                         </button>
-
-
                     </div>
                 </div>
 
                 <RecentProducts />
-                {/* <ProductListingPage /> */}
+
+                <div className="home_intro var_1">
+                    <div className="intro_right">
+                        <img src="images/beauty.png"></img>
+                    </div>
+                    <div className="intro_left">
+                        <div className="intro_left_title">Best Beauty Picks For You!</div>
+                        <div className="intro_left_subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        <button onClick={() => {
+                            navigate('/products')
+                            dispatch(sortByCategory('Beauty'))
+
+                        }} className="general_button">Shop Now</button>
+                    </div>
+                </div>
             </div>
         </div>
     )
