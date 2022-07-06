@@ -5,14 +5,19 @@ import setSnackbar from "../redux/actions/snackbarActions"
 
 const CardCard = (props) => {
 
-    const { id, title, description, amount, discount, count } = props.product
+    const { id, title, description, amount, discount, imageSrc, count } = props.product
 
     const dispatch = useDispatch()
+
+    const style = {
+        backgroundImage: `url('${imageSrc}')`,
+        // backgroundSize: `${props.bgSize}%`,
+    }
 
     return (
         <div id='cart_card'>
             <div className="cart_image_container">
-                <div className="cart_image"></div>
+                <div style={style} className="cart_image"></div>
             </div>
 
             <div className="cart_info_box">

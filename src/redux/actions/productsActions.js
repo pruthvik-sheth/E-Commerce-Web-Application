@@ -1,6 +1,6 @@
 
 
-const setProduct = ({ id, title = '', description = '', amount = 0, discount = 0, category = '' }) => ({
+const setProduct = ({ id, title = '', description = '', amount = 0, discount = 0, category = '', imageSrc = '' }) => ({
 
     type: 'SET_PRODUCT',
     product: {
@@ -9,7 +9,8 @@ const setProduct = ({ id, title = '', description = '', amount = 0, discount = 0
         description,
         amount,
         discount,
-        category
+        category,
+        imageSrc
     }
 })
 

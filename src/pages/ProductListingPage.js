@@ -13,6 +13,7 @@ const ProductListingPage = () => {
     const dispatch = useDispatch()
 
     const products = useSelector(state => state.products)
+    console.log(products);
 
     const filters = useSelector(state => state.filters)
 

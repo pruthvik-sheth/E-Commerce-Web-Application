@@ -9,6 +9,10 @@
     .eliminated_price {
         margin-right: 0;
     }
+
+    .percent_off {
+        margin-bottom: 1rem;
+    }
 }
 
 #cart_card+#cart_card {
@@ -22,7 +26,10 @@
 .cart_image {
     min-height: 120px;
     max-width: 150px;
-    background: url('../../../public/images/vr.png') no-repeat center / cover;
+    // background: url('../../../public/images/vr.png') no-repeat center / cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
 }
 
 
@@ -101,8 +108,4 @@
 .cart_price {
     font-weight: 900;
     font-size: 1.2rem;
-}
-
-.percent_off {
-    margin-bottom: 1rem;
 }
