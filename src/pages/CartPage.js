@@ -19,8 +19,6 @@ const CartPage = () => {
         return total += ((product.amount) * (1 - (product.discount / 100)) * product.count)
     }, 0)
 
-    console.log(extractedProducts)
-
     return (
         <div id='card_page'>
             <TitleBar title="Your Cart" />

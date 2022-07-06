@@ -6,19 +6,24 @@ import setSnackbar from '../redux/actions/snackbarActions';
 
 const ProductCard = (props) => {
 
+    const { id, title, description, amount, discount, imageSrc } = props.product
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const loggedIn = useSelector(state => state.auth.loggedIn)
-
-    const discount = props.product.discount
-    const amount = props.product.amount
     const price = amount * (1 - (discount / 100))
+
+    const style = {
+        backgroundImage: `url('${imageSrc}')`,
+        // backgroundSize: `${props.bgSize}%`,
+    }
+
+    const loggedIn = useSelector(state => state.auth.loggedIn)
 
     const handleProductClick = () => {
         if (loggedIn) {
 
-            dispatch(addToCart({ id: props.product.id }))
+            dispatch(addToCart({ id: id }))
             dispatch(setSnackbar(true, 'info', 'Product Added to Cart!', 1000))
 
         } else {
@@ -30,11 +35,11 @@ const ProductCard = (props) => {
 
     return (
         <div id='product_card'>
-            <div className="product_image"></div>
+            <div style={style} className="product_image"></div>
 
             <div className="product_info_box">
-                <div className="product_title">{props.product.title}</div>
-                <div className="product_desc">{props.product.description}</div>
+                <div className="product_title">{title}</div>
+                <div className="product_desc">{description}</div>
                 <div className="product_discount">
                     <div className="eliminated_price">MRP ₹<span>{amount}</span></div>
                     <div className="percent_off">{discount}% OFF</div>
@@ -49,3 +54,5 @@ const ProductCard = (props) => {
 }
 
 export default ProductCard
+
+

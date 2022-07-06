@@ -82,6 +82,7 @@ const AppRouter = () => {
                 amount: product.amount,
                 discount: product.discount,
                 category: product.category,
+                imageSrc: product.imageSrc,
               })
             )
           }
