@@ -5,7 +5,8 @@ const cookies = cookieFetcher()
 
 const initialAuthState = {
     loggedIn: !!cookies['user'],
-    userName: cookies['user']
+    userName: cookies['user'],
+    role: cookies['role']
 }
 
 
@@ -18,7 +19,8 @@ const authReducer = (state = initialAuthState, action) => {
         case 'LOGIN':
             return {
                 loggedIn: action.loggedIn,
-                userName: action.userName
+                userName: action.userName,
+                role: action.role
             }
 
         case 'LOGOUT':

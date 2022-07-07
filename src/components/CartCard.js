@@ -1,16 +1,17 @@
 import { useDispatch } from "react-redux"
 import { addToCart, removeFromCart } from "../redux/actions/cartActions"
 import setSnackbar from "../redux/actions/snackbarActions"
+import { Buffer } from 'buffer';
 
 
 const CardCard = (props) => {
 
-    const { id, title, description, amount, discount, imageSrc, count } = props.product
+    const { id, title, description, amount, discount, productImage, count } = props.product
 
     const dispatch = useDispatch()
 
     const style = {
-        backgroundImage: `url('${imageSrc}')`,
+        backgroundImage: `url('data:image/png;base64,${Buffer.from(productImage).toString('base64')}')`,
         // backgroundSize: `${props.bgSize}%`,
     }
 

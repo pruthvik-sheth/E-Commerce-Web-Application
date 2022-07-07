@@ -5,6 +5,10 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  subtitle: {
+    type: String,
+    required: true,
+  },
   description: {
     type: String,
     required: true,
@@ -21,8 +25,8 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  imageSrc: {
-    type: String,
+  productImage: {
+    type: Buffer,
     required: true,
   },
 });

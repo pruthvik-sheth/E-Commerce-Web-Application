@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from '../components/Header'
 import LoginPage from '../pages/LoginPage'
 import RegisterPage from '../pages/RegisterPage'
-import EditProductPage from '../pages/EditProductPage'
 import ProductPage from '../pages/ProductPage'
 import CartPage from '../pages/CartPage'
 import Footer from '../components/Footer'
@@ -10,6 +9,7 @@ import ErrorPage from '../pages/ErrorPage'
 import HomePage from '../pages/HomePage'
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
+import AddProductPage from '../pages/AddProductPage'
 
 // import { HomeProducts } from "../utils/dummyData"
 import { useEffect } from "react"
@@ -21,40 +21,7 @@ import { addToCart } from '../redux/actions/cartActions'
 const AppRouter = () => {
 
   const dispatch = useDispatch()
-  const getCart = async () => {
 
-    try {
-      const response = await fetch("/cart/getcart", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      try {
-        const data = await response.json();
-        console.log(data);
-
-        if (data.success) {
-          if (!data.empty) {
-            data.cart.items.forEach(
-              (element) => {
-                dispatch(addToCart({ id: element.item._id, fromDatabase: true, count: element.quantity }))
-              }
-            )
-          }
-        }
-      }
-      catch (err) {
-        console.log(err);
-      }
-
-    }
-    catch (err) {
-      console.log(err);
-    }
-
-  }
 
   const getProducts = async () => {
 
@@ -78,11 +45,12 @@ const AppRouter = () => {
               setProduct({
                 id: product._id,
                 title: product.title,
+                subtitle: product.subtitle,
                 description: product.description,
                 amount: product.amount,
                 discount: product.discount,
                 category: product.category,
-                imageSrc: product.imageSrc,
+                productImage: product.productImage,
               })
             )
           }
@@ -99,7 +67,6 @@ const AppRouter = () => {
 
   useEffect(() => {
     getProducts()
-    getCart()
   }, [])
 
   return (
@@ -110,7 +77,7 @@ const AppRouter = () => {
         <Route path='/login' element={<PublicRoute component={LoginPage} />} />
         <Route path='/register' element={<PublicRoute component={RegisterPage} />} />
         <Route path='/products' element={<ProductListingPage />} />
-        <Route path='/edit' element={<EditProductPage />} />
+        <Route path='/edit' element={<PrivateRoute component={AddProductPage} />} />
         <Route path='/spare' element={<ProductPage />} />
         <Route path='/cart' element={<PrivateRoute component={CartPage} />} />
         <Route path='*' element={<ErrorPage />} />

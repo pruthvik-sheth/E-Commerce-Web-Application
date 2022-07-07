@@ -3,10 +3,11 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux';
 import { addToCart } from '../redux/actions/cartActions';
 import setSnackbar from '../redux/actions/snackbarActions';
+import { Buffer } from 'buffer';
 
 const ProductCard = (props) => {
 
-    const { id, title, description, amount, discount, imageSrc } = props.product
+    const { id, title, subtitle, description, amount, discount, productImage } = props.product
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -14,7 +15,7 @@ const ProductCard = (props) => {
     const price = amount * (1 - (discount / 100))
 
     const style = {
-        backgroundImage: `url('${imageSrc}')`,
+        backgroundImage: `url('data:image/png;base64,${Buffer.from(productImage).toString('base64')}')`,
         // backgroundSize: `${props.bgSize}%`,
     }
 
@@ -39,7 +40,7 @@ const ProductCard = (props) => {
 
             <div className="product_info_box">
                 <div className="product_title">{title}</div>
-                <div className="product_desc">{description}</div>
+                <div className="product_desc">{subtitle}</div>
                 <div className="product_discount">
                     <div className="eliminated_price">MRP ₹<span>{amount}</span></div>
                     <div className="percent_off">{discount}% OFF</div>

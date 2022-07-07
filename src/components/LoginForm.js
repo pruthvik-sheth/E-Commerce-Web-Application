@@ -74,7 +74,7 @@ const LoginForm = () => {
 
                 // Dispatching login action to the store
                 dispatch(setSnackbar(true, 'success', data.message))
-                dispatch(login({ loggedIn: true, userName: data.userName }))
+                dispatch(login({ loggedIn: true, userName: data.userName, role: data.role }))
                 getCart()
 
             }
