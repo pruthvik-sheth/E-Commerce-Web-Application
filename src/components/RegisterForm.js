@@ -19,6 +19,9 @@ const RegisterForm = () => {
     const lastname = event.target.elements.lastname.value;
     const email = event.target.elements.email.value;
     const password = event.target.elements.password.value;
+    const role = event.target.elements.role.value;
+
+    console.log(role);
 
     const response = await fetch("/user/register", {
       method: "POST",
@@ -30,6 +33,7 @@ const RegisterForm = () => {
         lastname,
         email,
         password,
+        role
       }),
     });
 
@@ -73,6 +77,13 @@ const RegisterForm = () => {
             inputType="email"
             inputName="email"
           />
+
+
+          <select name="role">
+            <option value="Buyer">Select your Role</option>
+            <option value="Buyer">Buyer</option>
+            <option value="Seller">Seller</option>
+          </select>
         </div>
 
         <div className="section_info">

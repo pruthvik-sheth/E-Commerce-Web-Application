@@ -1,6 +1,7 @@
 import CartCard from '../components/CartCard'
 import TitleBar from '../components/TitleBar'
 import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
 
 
 
@@ -8,6 +9,30 @@ const CartPage = () => {
 
     const cartProducts = useSelector(state => state.cart)
     const allProducts = useSelector(state => state.products)
+
+    const updateServerCart = async () => {
+
+        const toSendProducts = cartProducts.map(
+            (product) => {
+                return { item: product.id, quantity: product.count }
+            }
+        )
+        console.log(toSendProducts);
+
+        const response = await fetch("/cart/addcart", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                items: toSendProducts
+            }),
+        });
+
+        const data = await response.json();
+
+        console.log(data);
+    }
 
     const extractedProducts = cartProducts.map(
         (cartProduct) => {
@@ -18,6 +43,10 @@ const CartPage = () => {
     const total = extractedProducts.reduce((total, product) => {
         return total += ((product.amount) * (1 - (product.discount / 100)) * product.count)
     }, 0)
+
+    useEffect(() => {
+        return () => { updateServerCart() }
+    }, [])
 
     return (
         <div id='card_page'>

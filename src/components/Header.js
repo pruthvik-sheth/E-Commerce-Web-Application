@@ -11,7 +11,7 @@ const Header = () => {
 
 
 
-    const { loggedIn, userName } = useSelector(state => ({ loggedIn: state.auth.loggedIn, userName: state.auth.userName }))
+    const { loggedIn, userName, role } = useSelector(state => ({ loggedIn: state.auth.loggedIn, userName: state.auth.userName, role: state.auth.role }))
     const filters = useSelector(state => state.filters)
     const cartProducts = useSelector(state => state.cart)
 
@@ -105,8 +105,12 @@ const Header = () => {
                             placeholder="Search Products"></input>
                         {
                             loggedIn ? (
+
                                 <>
                                     <p className='nav_item'>Hello, <span>{userName}</span></p>
+                                    {
+                                        role === 'Seller' && <button onClick={() => { navigate('/edit') }} className="nav_button nav_item general_button">Add Product</button>
+                                    }
                                     <button onClick={handleLogout} className="nav_button nav_item general_button">Logout</button>
                                 </>
                             ) : (

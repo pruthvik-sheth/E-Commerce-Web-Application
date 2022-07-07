@@ -1,9 +1,10 @@
-import { combineReducers, createStore } from "redux";
+import { combineReducers, compose, createStore } from "redux";
 import authReducer from "../reducers/authReducer";
 import cartReducer from "../reducers/cartReducer";
 import filtersReducer from "../reducers/filtersReducer";
 import productsReducer from "../reducers/productsReducer";
 import snackbarReducer from "../reducers/snackbarReducer";
+
 
 export default () => {
 
@@ -14,7 +15,10 @@ export default () => {
             filters: filtersReducer,
             snackbar: snackbarReducer,
             cart: cartReducer
-        })
+        }),
+        {}
+        ,
+        compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
     )
 
     return store
