@@ -21,7 +21,7 @@ const upload = multer({
 })
 
 //routes
-route.post("/addproduct", authenticate,upload.single('image'), async (req, res) => {
+route.post("/addproduct", authenticate, upload.single('image'), async (req, res) => {
   try {
     if (!req.file) {
       throw new Error('Product Image is required');
@@ -58,7 +58,7 @@ route.post("/addproduct", authenticate,upload.single('image'), async (req, res) 
 
 //route for updatecart
 //routes
-route.patch("/editproduct", authenticate,upload.single('image'), async (req, res) => {
+route.patch("/editproduct", authenticate, upload.single('image'), async (req, res) => {
   try {
     if (!req.file) {
       throw new Error('Product Image is required');
@@ -102,10 +102,10 @@ route.get("/products", async (req, res) => {
 });
 
 //route to get products by id
-route.get("/products/:id", async (req, res) => {
+route.get("/myproducts", async (req, res) => {
   try {
 
-    const product = await Product.findById(req.params.id);
+    const product = await Product.find({ sellerId: req.userId });
     res.status(200).json({ message: "Successfully found the products", success: true, product: product });
 
   } catch (err) {

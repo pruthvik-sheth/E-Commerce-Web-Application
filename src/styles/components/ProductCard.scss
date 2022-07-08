@@ -4,6 +4,7 @@
     @include flexBoxify(column, center, center);
     background-color: $accent-gray;
     border-radius: 0.2rem;
+    cursor: pointer;
 
 }
 

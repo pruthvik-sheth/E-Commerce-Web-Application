@@ -1,80 +1,108 @@
 import Modal from 'react-modal'
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import setModalOpen from '../redux/actions/modalActions'
 import { Buffer } from 'buffer';
 import { addToCart } from '../redux/actions/cartActions';
 import setSnackbar from '../redux/actions/snackbarActions';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import ColorThief from '../utils/color-thief'
+
 
 
 Modal.setAppElement('#root')
 
 const MyModal = () => {
 
-    // const [result, setResult] = useState()
-
-
     const dispatch = useDispatch()
+    const colorthief = new ColorThief()
 
     const isOpen = useSelector(state => state.modal.isOpen)
-    const productId = useSelector(state => state.modal.productId)
-    const products = useSelector(state => state.products)
+    const product = useSelector(state => state.modal.product)
+    // const cartProducts = useSelector(state => state.modal.product)
     const loggedIn = useSelector(state => state.auth.loggedIn)
-
-    const foundProduct = products.find(product => product.id === productId)
-
-    const imageRef = React.createRef()
+    const [result, setResult] = useState()
 
 
     const handleProductClick = () => {
         if (loggedIn) {
 
-            dispatch(addToCart({ id: foundProduct.id }))
+            dispatch(addToCart({ id: product.id }))
             dispatch(setSnackbar(true, 'info', 'Product Added to Cart!', 1000))
+            dispatch(setModalOpen({ isOpen: false, product: undefined }))
 
         } else {
             dispatch(setSnackbar(true, 'info', 'Please login first!', 2000))
-            // navigate('/cart')
         }
 
     }
 
-    // let hello, style
 
-    // const handlePick = () => {
-    //     const colorthief = new ColorThief()
 
-    //     const img = imageRef.current;
-    //     const result = colorthief.getColor(img, 25);
+    const handlePick = () => {
 
-    //     setResult(result)
+        const img = product?.productImage
+        // console.log(img);
+        // if (img?.complete) {
+        //     setResult(colorthief.getColor(img))
 
-    //     // return result
+        setResult(colorthief.getColor(img))
 
-    //     // style = {
-    //     //     background: `rgb(${result[0]}, ${result[1]}, ${result[2]})`,
-    //     // }
-    // }
+        // } else {
+        //     img.addEventListener('load', function () {
+        //         setResult(colorthief.getColor(img))
+        //     });
+        // }
+
+        // const image = new Image()
+        // image.src = `data:image/png;base64,${Buffer.from(product.productImage).toString('base64')}`
+
+        // image.onload((e) => {
+        //     const result = colorthief.getColor(image, 25);
+        //     console.log(result);
+        // })
+
+        // const result = colorthief.getColor(img, 25);
+
+        // console.log(result)
+
+        // return result
+
+        // style = {
+        //     background: `rgb(${result[0]}, ${result[1]}, ${result[2]})`,
+        // }
+    }
+
+    useEffect(() => {
+        if (product) {
+            const result = colorthief.getColor(product?.productImage)
+            // console.log(result);
+            setResult({
+                backgroundColor: `rgba(${result[0]}, ${result[1]}, ${result[2]}, 0.5)`,
+            })
+        }
+    }, [product])
 
 
 
     return (
         <Modal className="modal" isOpen={isOpen} onRequestClose={() => { dispatch(setModalOpen({ isOpen: false })) }}>
             {
-                foundProduct && (
+                product && (
                     <>
-                        <div className='modal-left'>
-                            <img src={`data:image/png;base64,${Buffer.from(foundProduct.productImage).toString('base64')}`}></img>
+                        <div style={result} className='modal-left'>
+                            <img id='my-image' src={`data:image/png;base64,${Buffer.from(product.productImage).toString('base64')}`}></img>
                         </div>
+                        {/* <button onClick={() => { handlePick() }}>Please Ho ja</button> */}
                         <div className='modal-right'>
                             <div className='right__info'>
-                                <div className='info-title'>{foundProduct.title}</div>
+                                <div className='info-title'>{product.title}</div>
 
-                                <div className='info-subtitle'>{foundProduct.subtitle}</div>
+                                <div className='info-subtitle'>{product.subtitle}</div>
 
                                 <div className='info-description'>
                                     <div className='desc_title'>Description:</div>
-                                    {foundProduct.description}
+                                    {product.description}
                                 </div>
 
                                 <div className="cart_sec cart_sec_2">
@@ -90,7 +118,7 @@ const MyModal = () => {
 
                                 <div className='info-bottom'>
                                     <div className='info-price'>
-                                        ₹ {(foundProduct.amount) * (1 - ((foundProduct.discount) / 100))}
+                                        ₹ {(product.amount) * (1 - ((product.discount) / 100))}
                                     </div>
                                     <button onClick={handleProductClick} className='general_button'>ADD TO CART</button>
                                 </div>

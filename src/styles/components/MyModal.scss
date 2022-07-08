@@ -37,7 +37,7 @@
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     width: 50%;
-    background-color: rgb(189, 176, 159);
+    // background-color: rgb(189, 176, 159);
     min-height: 80vh;
     @include flexBoxify(row, center, center);
 }

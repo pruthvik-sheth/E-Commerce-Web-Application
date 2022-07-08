@@ -36,7 +36,7 @@ const ProductCard = (props) => {
     }
 
     return (
-        <div onClick={() => { dispatch(setModalOpen({ isOpen: true, productId: id })) }} id='product_card'>
+        <div onClick={() => { dispatch(setModalOpen({ isOpen: true, product: props.product })) }} id='product_card'>
             <div style={style} className="product_image"></div>
 
             <div className="product_info_box">
@@ -48,7 +48,7 @@ const ProductCard = (props) => {
                 </div>
                 <div className="product_lower">
                     <div className="product_price">₹ {price}</div>
-                    <button onClick={handleProductClick} className="general_button_2">Add to Cart</button>
+                    {/* <button onClick={handleProductClick} className="general_button_2">Add to Cart</button> */}
                 </div>
             </div>
         </div>
