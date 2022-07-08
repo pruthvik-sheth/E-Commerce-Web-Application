@@ -1,6 +1,6 @@
 # Project Description
 
-This is the website which allows user to login or register with secure authentication. They can also able to see the prodcuts and it will allow users to add products into cart. In the cart page they can remove the product or Increase the quantity of the products.
+This is a Web Application which allows users to login or register with secure authentication. They are also able to see the products and it will allow users to add products to cart. In the cart page they can remove the product or increase the quantity of the products.
 
 ##Info About Stack :
 
