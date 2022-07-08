@@ -29,6 +29,7 @@ const MyModal = () => {
 
             dispatch(addToCart({ id: product.id }))
             dispatch(setSnackbar(true, 'info', 'Product Added to Cart!', 1000))
+            dispatch(setModalOpen({ isOpen: false, product: undefined }))
 
         } else {
             dispatch(setSnackbar(true, 'info', 'Please login first!', 2000))
