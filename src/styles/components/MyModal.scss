@@ -1,0 +1,107 @@
+.ReactModalPortal>div {
+    opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+    transition: opacity 200ms ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+
+.modal {
+    background-color: rgb(231, 231, 231);
+    @include flexBoxify(row, center, center);
+    // color: white;
+    outline: none;
+    min-height: 80vh;
+    width: 70vw;
+    border-radius: 0.5rem;
+
+    .cart_sec {
+
+        margin-top: 2rem;
+        @include flexBoxify(row, center, flex-start);
+    }
+}
+
+.modal-left {
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    width: 50%;
+    background-color: rgb(189, 176, 159);
+    min-height: 80vh;
+    @include flexBoxify(row, center, center);
+}
+
+.modal-right {
+    width: 50%;
+    min-height: 80vh;
+    padding: 0 3rem;
+}
+
+.right__info {
+
+    @include flexBoxify(column, flex-start, flex-start);
+    height: 80vh;
+    padding: 3rem 0;
+}
+
+
+.info-title {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+
+.info-subtitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.info-description {
+    margin-top: 2rem;
+}
+
+.desc_title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.counter {
+    .desc_title {
+
+        margin-bottom: 0rem;
+        margin-right: 1.5rem;
+    }
+}
+
+.info-bottom {
+    width: 100%;
+    margin-top: auto;
+    @include flexBoxify(row, center, space-between);
+}
+
+.info-price {
+    font-weight: 800;
+    font-size: 1.6rem;
+}
+
+#custom_image {
+    display: none;
+}
+
+// .modal__title {
+//     font-size: 2rem;
+//     margin-bottom: $l-size;
+//     word-break: break-all;
+// }

@@ -9,6 +9,7 @@ const Product = require("../../Database/Schemas/product");
 //For Uploading Images
 const upload = multer({
   fileFilter(req, file, callback) {
+    // console.log(file);
     if (!file.originalname.match(/\.(jpg|png|jpeg)$/)) {
       callback(new Error('Please upload an Image file'));
     }
@@ -21,11 +22,14 @@ const upload = multer({
 
 route.post("/addproduct", upload.single('image'), async (req, res) => {
   try {
+
+    console.log(req);
+
     if (!req.file) {
       throw new Error('Product Image is required');
     }
     try {
-      const image = await sharp(req.file.buffer).png().toBuffer();
+      const image = await sharp(req.file.buffer).resize({ width: 500, height: 500 }).png().toBuffer();
 
       const newProduct = await Product.create({
         title: req.body.title,
@@ -47,6 +51,7 @@ route.post("/addproduct", upload.single('image'), async (req, res) => {
     }
   }
   catch (err) {
+    console.log(err);
     res.status(500).json({ message: "An error occured while posting product", success: false });
   }
 })
