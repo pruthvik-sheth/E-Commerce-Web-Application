@@ -1,9 +1,9 @@
 
 
-const setModalOpen = ({ isOpen = false, productId }) => ({
+const setModalOpen = ({ isOpen = false, product }) => ({
     type: 'SET_MODAL_OPEN',
     isOpen,
-    productId
+    product
 })
 
 export default setModalOpen

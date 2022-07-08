@@ -1,7 +1,7 @@
 
 const initialModalState = {
     isOpen: false,
-    productId: null
+    product: undefined
 }
 
 const modalReducer = (state = initialModalState, action) => {
@@ -12,7 +12,7 @@ const modalReducer = (state = initialModalState, action) => {
             return {
                 ...state,
                 isOpen: action.isOpen,
-                productId: action.productId
+                product: action.product
             }
 
         default:

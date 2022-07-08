@@ -16,10 +16,6 @@ const Header = () => {
     const filters = useSelector(state => state.filters)
     const cartProducts = useSelector(state => state.cart)
 
-
-
-
-
     const cartTotal = cartProducts.reduce((total, product) => {
         return total = total + product.count
     }, 0)
@@ -104,13 +100,15 @@ const Header = () => {
                             }}
                             className="text_box search_bar_item nav_item"
                             placeholder="Search Products"></input>
+                        <button onClick={() => { navigate('/spare') }} className="nav_button nav_item general_button">Edit Product</button>
+
                         {
                             loggedIn ? (
 
                                 <>
                                     <p className='nav_item'>Hello, <span>{userName}</span></p>
                                     {
-                                        role === 'Seller' && <button onClick={() => { navigate('/edit') }} className="nav_button nav_item general_button">Add Product</button>
+                                        role === 'Seller' && <button onClick={() => { navigate('/edit', { state: { isEdit: true, product: { title: 'Hello title' } } }) }} className="nav_button nav_item general_button">Add Product</button>
                                     }
                                     <button onClick={handleLogout} className="nav_button nav_item general_button">Logout</button>
                                 </>

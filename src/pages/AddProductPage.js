@@ -2,8 +2,27 @@ import TitleBar from '../components/TitleBar'
 import InputField from '../components/InputField'
 import { useDispatch } from 'react-redux/es/hooks/useDispatch'
 import setSnackbar from '../redux/actions/snackbarActions'
+import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 const EditProductPage = () => {
+
+    const location = useLocation()
+
+    const { isEdit = false, product } = location.state
+    console.log(isEdit);
+    console.log(product);
+
+    const [title, setTitle] = useState(product?.title ?? '')
+    const [subtitle, setSubtitle] = useState(product?.subtitle ?? '')
+    const [description, setDescription] = useState(product?.description ?? '')
+    const [category, setCategory] = useState(product?.category ?? '')
+    const [amount, setAmount] = useState(product?.amount ?? '')
+    const [discount, setDiscount] = useState(product?.discount ?? '')
+    const [image, setImage] = useState(null)
+
+
+
 
     const dispatch = useDispatch()
 
@@ -68,18 +87,18 @@ const EditProductPage = () => {
             <div className='container'>
                 <form onSubmit={handleSubmit}>
                     <div className="side_by_side_fields">
-                        <div className='side_item'><InputField inputType="text" inputName="title" inputTitle="Product Title *" /></div>
-                        <div className='side_item'><InputField inputType="text" inputName="subtitle" inputTitle="Product Subtitle*" /></div>
+                        <div className='side_item'><InputField onChange={e => setTitle(e.target.value)} inputValue={title} inputType="text" inputName="title" inputTitle="Product Title *" /></div>
+                        <div className='side_item'><InputField onChange={e => setSubtitle(e.target.value)} inputValue={subtitle} inputType="text" inputName="subtitle" inputTitle="Product Subtitle*" /></div>
                     </div>
                     <div className="side_by_side_fields">
-                        <div className='side_item'><InputField inputType="number" inputName="amount" inputTitle="Product Amount *" /></div>
-                        <div className='side_item'><InputField inputType="number" inputName="discount" inputTitle="Product Discount*" /></div>
+                        <div className='side_item'><InputField onChange={e => setAmount(e.target.value)} inputValue={amount} inputType="number" inputName="amount" inputTitle="Product Amount *" /></div>
+                        <div className='side_item'><InputField onChange={e => setDiscount(e.target.value)} inputValue={discount} inputType="number" inputName="discount" inputTitle="Product Discount*" /></div>
                     </div>
                     <div className="side_by_side_fields">
 
                         <div className='drop_down side_item'>
                             <div className='input_title'>Product Category</div>
-                            <select name="category">
+                            <select onChange={e => setCategory(e.target.value)} value={category} name="category">
                                 <option value="">Select</option>
                                 <option value="Lifestyle">Lifestyle</option>
                                 <option value="Electronics">Electronics</option>
@@ -87,7 +106,7 @@ const EditProductPage = () => {
                                 <option value="Books">Books</option>
                             </select>
                         </div>
-                        <div className='side_item'><InputField inputType="text" inputName="description" inputTitle="Description *" /></div>
+                        <div className='side_item'><InputField onChange={e => setDescription(e.target.value)} inputValue={description} inputType="text" inputName="description" inputTitle="Description *" /></div>
                     </div>
                     <div className='upload_button_div'><input name='image' className='custom_file_input' type="file"></input></div>
                     <div className='buttons'>
