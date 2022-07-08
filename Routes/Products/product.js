@@ -2,6 +2,8 @@ const express = require("express");
 const route = express.Router();
 const multer = require('multer');
 const sharp = require('sharp');
+const authenticate = require('../../middleware/authentication')
+
 
 //importing product schema
 const Product = require("../../Database/Schemas/product");
@@ -19,17 +21,14 @@ const upload = multer({
 })
 
 //routes
-
-route.post("/addproduct", upload.single('image'), async (req, res) => {
+route.post("/addproduct", authenticate,upload.single('image'), async (req, res) => {
   try {
-
-    console.log(req);
-
     if (!req.file) {
       throw new Error('Product Image is required');
     }
     try {
       const image = await sharp(req.file.buffer).resize({ width: 500, height: 500 }).png().toBuffer();
+      const sellerId = req.userId
 
       const newProduct = await Product.create({
         title: req.body.title,
@@ -38,7 +37,8 @@ route.post("/addproduct", upload.single('image'), async (req, res) => {
         amount: req.body.amount,
         discount: req.body.discount,
         category: req.body.category,
-        productImage: image
+        productImage: image,
+        sellerId: sellerId
       })
 
       res.status(200).json({ message: "Products Added to the Database!", success: true, product: newProduct, });
@@ -56,6 +56,37 @@ route.post("/addproduct", upload.single('image'), async (req, res) => {
   }
 })
 
+//route for updatecart
+//routes
+route.patch("/editproduct", authenticate,upload.single('image'), async (req, res) => {
+  try {
+    if (!req.file) {
+      throw new Error('Product Image is required');
+    }
+    try {
+      const image = await sharp(req.file.buffer).resize({ width: 500, height: 500 }).png().toBuffer();
+      const sellerId = req.userId
+
+      const registeredProduct = Product.find(sellerId && req.params.id)
+      console.log(registeredProduct);
+
+      res.status(200).json({ message: "Products Updated to the Database!", success: true, product: newProduct, });
+    }
+    catch (err) {
+
+      console.log("Error generated while updating product" + err);
+      res.status(404).json({ message: "Error while updating product", success: false });
+
+    }
+  }
+  catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "An error occured while updating product", success: false });
+  }
+})
+
+
+//route to get products
 route.get("/products", async (req, res) => {
 
   try {
@@ -70,6 +101,7 @@ route.get("/products", async (req, res) => {
   }
 });
 
+//route to get products by id
 route.get("/products/:id", async (req, res) => {
   try {
 

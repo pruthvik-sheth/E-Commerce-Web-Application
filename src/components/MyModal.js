@@ -5,9 +5,6 @@ import setModalOpen from '../redux/actions/modalActions'
 import { Buffer } from 'buffer';
 import { addToCart } from '../redux/actions/cartActions';
 import setSnackbar from '../redux/actions/snackbarActions';
-import ColorThief from "colorthief";
-import { useState } from 'react';
-
 
 
 Modal.setAppElement('#root')
