@@ -107,10 +107,3 @@ const MyModal = () => {
 }
 
 export default MyModal
-
-
-{/* <p>{foundProduct.title}</p>
-                        <p>{foundProduct.subtitle}</p>
-                        <p>{foundProduct.description}</p>
-                        <p>{foundProduct.amount}</p>
-                        <p>{foundProduct.discount}</p> */}
