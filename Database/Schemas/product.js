@@ -29,6 +29,11 @@ const productSchema = mongoose.Schema({
     type: Buffer,
     required: true,
   },
+  sellerId: {
+    type: String,
+    required: true,
+  }
+
 });
 
 
