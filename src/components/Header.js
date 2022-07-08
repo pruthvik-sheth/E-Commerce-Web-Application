@@ -6,6 +6,7 @@ import { logout } from '../redux/actions/authActions';
 import { setTextFilter } from '../redux/actions/filtersActions';
 import setSnackbar from '../redux/actions/snackbarActions';
 import { emptyCart } from '../redux/actions/cartActions';
+import setModalOpen from '../redux/actions/modalActions';
 
 const Header = () => {
 

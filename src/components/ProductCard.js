@@ -4,10 +4,11 @@ import { useSelector } from 'react-redux';
 import { addToCart } from '../redux/actions/cartActions';
 import setSnackbar from '../redux/actions/snackbarActions';
 import { Buffer } from 'buffer';
+import setModalOpen from '../redux/actions/modalActions';
 
 const ProductCard = (props) => {
 
-    const { id, title, subtitle, description, amount, discount, productImage } = props.product
+    const { id, title, subtitle, amount, discount, productImage } = props.product
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -35,7 +36,7 @@ const ProductCard = (props) => {
     }
 
     return (
-        <div id='product_card'>
+        <div onClick={() => { dispatch(setModalOpen({ isOpen: true, productId: id })) }} id='product_card'>
             <div style={style} className="product_image"></div>
 
             <div className="product_info_box">

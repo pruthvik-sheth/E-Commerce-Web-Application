@@ -4,9 +4,9 @@ import setSnackbar from "../redux/actions/snackbarActions"
 import { Buffer } from 'buffer';
 
 
-const CardCard = (props) => {
+const CartCard = (props) => {
 
-    const { id, title, description, amount, discount, productImage, count } = props.product
+    const { id, title, subtitle, amount, discount, productImage, count } = props.product
 
     const dispatch = useDispatch()
 
@@ -25,7 +25,7 @@ const CardCard = (props) => {
 
                 <div className="cart_sec cart_sec_1">
                     <div className="cart_title">{title}</div>
-                    <div className="cart_description">{description}</div>
+                    <div className="cart_description">{subtitle}</div>
                 </div>
 
                 <div className="cart_sec cart_sec_2">
@@ -99,4 +99,4 @@ const CardCard = (props) => {
     )
 }
 
-export default CardCard
+export default CartCard
