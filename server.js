@@ -17,6 +17,7 @@ dbConnection.getConnection()
 const app = express()
 
 //middleware
+app.use(express.static(path.join(__dirname, "build")))
 app.use(express.json())
 app.use(cors())
 app.use(cookie())
@@ -25,6 +26,7 @@ app.use(cookie())
 app.use('/user', userRoute)
 app.use('/product', productRoute)
 app.use('/cart', authenticate, cartRoute)
+
 
 //
 app.get("*", (req, res) => {
