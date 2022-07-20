@@ -11,7 +11,6 @@
     "@testing-library/user-event": "^13.5.0",
     "bcrypt": "^5.0.1",
     "buffer": "^6.0.3",
-    "colorthief": "^2.1.0",
     "cookie": "^0.5.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -32,7 +31,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start" : "node server.js",
+    "start:react": "react-scripts start",
     "start:server": "env-cmd -f  config/.env.development nodemon server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",

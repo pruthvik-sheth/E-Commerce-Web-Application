@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const authenticate = require('./middleware/authentication')
 const cookie = require('cookie-parser')
+const path = require('path')
 const dbConnection = require('./Database/getConnection')
 
 //importing all the routes
@@ -24,6 +25,11 @@ app.use(cookie())
 app.use('/user', userRoute)
 app.use('/product', productRoute)
 app.use('/cart', authenticate, cartRoute)
+
+//
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build/index.html"))
+})
 
 
 //listening on the desired port
