@@ -79,6 +79,7 @@ const MyModal = () => {
             // console.log(result);
             setResult({
                 backgroundColor: `rgba(${result[0]}, ${result[1]}, ${result[2]}, 0.5)`,
+                Color: `rgba(${result[0]}, ${result[1]}, ${result[2]}, 0.5)`
             })
         }
     }, [product])
@@ -96,7 +97,7 @@ const MyModal = () => {
                         {/* <button onClick={() => { handlePick() }}>Please Ho ja</button> */}
                         <div className='modal-right'>
                             <div className='right__info'>
-                                <div className='info-title'>{product.title}</div>
+                                <div style={result} className='info-title'>{product.title}</div>
 
                                 <div className='info-subtitle'>{product.subtitle}</div>
 
